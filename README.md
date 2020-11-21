@@ -1,11 +1,11 @@
 # Wine Quality Predictor
 
-  - contributors: 
-  Member | Github
+contributors: 
+Member | Github
 -------|---------
-Alex Truong Hai Yen | [athy9193](https://github.com/athy9193)
 Bruhat Musunuru |[bruhatm](https://github.com/BruhatM)
-Rui Wang |[]()
+Alex Truong Hai Yen | [athy9193](https://github.com/athy9193)
+Rui Wang |[wang-rui](https://github.com/wang-rui)
 Sang Yoon Lee |[rissangs](https://github.com/rissangs)
 
 First milestone of a data analysis project for DSCI 522 (Data Science workflows, part of Master of Data Science program at the University of British Columbia.)
