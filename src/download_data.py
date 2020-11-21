@@ -11,20 +11,28 @@ Options:
 """
   
 from docopt import docopt
+import requests
 import os
 import pandas as pd
 
 opt = docopt(__doc__)
 
 def main(url, out_file):
+  # Test validiliy of URL
+  request = requests.get(url)
+  if request.status_code != 200:
+    print('The URL is invaild')
+    return
+  
+  # Download data
   data = pd.read_csv(url,  delimiter=';')
-   
+
+  # Save data 
   try:
     data.to_csv(out_file, index = False)
   except:
     os.makedirs(os.path.dirname(out_file))
     data.to_csv(out_file, index = False)
-
 
 if __name__ == "__main__":
   main( opt["--url"], opt["--out_file"])

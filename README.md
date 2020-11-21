@@ -26,7 +26,16 @@ To replicate the analysis, clone this GitHub repository, install the
 commands at the command line/terminal from the root directory of this
 project: {ADD RUN CODE!!!}
 
-
+1. Create a conda envrioment using the `wine_env.yml`
+```bash
+conda env create --file wine_env.yml
+conda activate wine_env
+```
+2. Download wine data set in data directory
+```bash
+python src/download_data.py --url="https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv" --out_file="data/winequality-red.csv"
+python src/download_data.py --url="https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv" --out_file="data/winequality-white.csv"
+```
 ## Dependencies
 
   - Python 3.7.3 and Python packages:
