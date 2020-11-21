@@ -1,6 +1,6 @@
 # Wine Quality Predictor
 
-contributors: 
+Authors: 
 Member | Github
 -------|---------
 Bruhat Musunuru |[bruhatm](https://github.com/BruhatM)
