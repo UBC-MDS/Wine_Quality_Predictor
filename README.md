@@ -24,7 +24,7 @@ For this Milestone we have performed an EDA on the data set which can be found h
 To replicate the analysis, clone this GitHub repository, install the
 [dependencies](#dependencies) listed below, and run the following
 commands at the command line/terminal from the root directory of this
-project: {ADD RUN CODE!!!}
+project: 
 
 1. Create a conda envrioment using the `wine_env.yml`
 ```bash
