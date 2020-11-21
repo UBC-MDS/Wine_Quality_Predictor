@@ -8,7 +8,7 @@ First milestone of a data analysis project for DSCI 522 (Data Science workflows,
 
 In this project we are trying to predict the quality of a given wine sample using its features, composition and characteristics. Traditional methods of categorizing wine are prone to human error and can vary drastically from expert to expert. We propose a data mining approach to predict human wine taste preferences based on complex data analytical algorithms and classification models. This unbiased and human error free metric can provide a standardized metric that can be used for personalized wine recommendation, Quality assessment and comparison unit. It can also be used by wineries as an important metric which could aid in important business decisions and strategies.
 	
-  The data set used in this project is created by Paulo Cortez from the University of Minho in Guimarães, Portugal, and A. Cerdeira, F. Almeida, T. Matos and J. Reis from the Viticulture Commission of the Vinho Verde Region in Porto, Portugal. The two datasets are included are related to red and white vinho verde wine samples, from the north of Portugal. It was sourced from the UCI Machine Learning Repository and can be found here{ADD LINK}. Each row in the data set represents summary statistics from a sample of wine based on physicochemical tests with attributes fixed acidity, volatile acidity, citric acid, residual sugar, pH, etc.  
+  The data set used in this project is created by Paulo Cortez from the University of Minho in Guimarães, Portugal, and A. Cerdeira, F. Almeida, T. Matos and J. Reis from the Viticulture Commission of the Vinho Verde Region in Porto, Portugal. The two datasets are included are related to red and white vinho verde wine samples, from the north of Portugal. It was sourced from the UCI Machine Learning Repository and can be found [here](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/). Each row in the data set represents summary statistics from a sample of wine based on physicochemical tests with attributes fixed acidity, volatile acidity, citric acid, residual sugar, pH, etc.  
 
   We plan to build a predictive classification model to provide the standardized metric discussed above. In order for the model to abide by the golden rule, we plan to split the data into train and test sets (80% - 20% respectively) and perform exploratory data analysis in order to assess any class imbalance, outliers that needs to be considered when scouting for best model to fit our needs. (ADD WHAT EDA IS INCLUDED IN THE EDA FILE LIKE THE PLOT)
 	
@@ -38,18 +38,7 @@ python src/download_data.py --url="https://archive.ics.uci.edu/ml/machine-learni
 ```
 ## Dependencies
 
-  - Python 3.7.3 and Python packages:
-      - docopt==0.6.2
-      - requests==2.22.0
-      - pandas==0.24.2
-      - feather-format==0.4.0
-  - R version 3.6.1 and R packages:
-      - knitr==1.26
-      - feather==0.3.5
-      - tidyverse==1.2.1
-      - caret==6.0-84
-      - ggridges==0.5.1
-      - ggthemes==4.2.0
+To run this project, please install the required dependencies from [here](https://github.com/UBC-MDS/Wine_Quality_Predictor/blob/main/wine_env.yml)
 
 ## License
 
