@@ -3,7 +3,7 @@
    
 Member | Github 
 -------|---------
-Alex Truong Hai Yen | @athy9193
+Alex Truong Hai Yen | athy9193(https://github.com/athy9193)
 Bruhat Musunuru |
 Rui Wang |
 Sang Yoon Lee |
@@ -30,5 +30,13 @@ Intro on EDA, link to EDA code in /src
 ## Usage
 
 ## Dependency
+Project dependency is listed in the wine_env.yml file at root folder above.
 
 ## License
+
+`TOD include general statement from LICENSE file`
+
+## Reference
+
+Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
+
