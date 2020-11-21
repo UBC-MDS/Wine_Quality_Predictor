@@ -1,7 +1,12 @@
 # EDA on Wine Quality Data Set
 
-    The rpy2.ipython extension is already loaded. To reload it, use:
-      %reload_ext rpy2.ipython
+    C:\Users\truon\miniconda3\envs\wine_quality\lib\site-packages\ipykernel\parentpoller.py:113: UserWarning: Parent poll failed.  If the frontend dies,
+                    the kernel may be left running.  Please let us know
+                    about your system (bitness, Python, etc.) at
+                    ipython-dev@scipy.org
+      warnings.warn("""Parent poll failed.  If the frontend dies,
+    C:\Users\truon\miniconda3\envs\wine_quality\lib\site-packages\rpy2\robjects\packages.py:365: UserWarning: The symbol 'quartz' is not in this R namespace/package.
+      warnings.warn(
     
 
 ## Summary of the data set
@@ -12,9 +17,9 @@ Learning Repository](https://archive.ics.uci.edu/ml/datasets/wine+quality).
 
 There are two datasets for red and white wine samples. For each wine sample observation , the inputs contains measurements of various objective physicochemical tests, and the output is the median wine quality ratings given by experts on the scale from 0 (very bad) and 10 (very excellent).The author notes that data on grape types, wine brand, wind selling price among other are not available due to privacy and logistics issues. There are 1599 observations for red wine and 4898 observations of white wine.
 
-## Data import
+## Data Import
 
-## Preprocessing
+After importing the downloaded data,  the below tables show the summary statistics of all numeric features in the white wine data set. 
 
 
 
@@ -178,6 +183,8 @@ There are two datasets for red and white wine samples. For each wine sample obse
 
 
 
+Similar table for red wine data set
+
 
 
 
@@ -340,7 +347,7 @@ There are two datasets for red and white wine samples. For each wine sample obse
 
 
 
-Base on the brief summary of the data above, there is no missing value, all the features have numeric values, hence there is no major preprocessing needed besides combining the two data set of red wine and white wine to consider wine type (i.e. red or wine) as another possible features that could link to wine quality.
+Base on the brief summary of the data above, there is no missing value, all the features have numeric values, hence there is no major preprocessing needed. We decide to combine the two data sets of red wine and white wine to consider wine type (i.e. red or wine) as another possible features that could link to wine quality. Below is the combined data set.
 
 
 
@@ -564,42 +571,42 @@ Base on the brief summary of the data above, there is no missing value, all the 
 
 ## Univariate Analysis
 
-#### Distribution of wine quality ratings
+#### Distribution of the target: wine quality ratings
 
 
 
 
     
-![png](wine_EDA_files/wine_EDA_12_0.png)
+![png](wine_EDA_files/wine_EDA_13_0.png)
     
 
 
 
-Wine quality ratings range between 3-9. Although the rating value is in numeric values, it seems to serve as discrete ranking categories rather then a continuous scoring scale. Most of the wine are rated as 5 and 6.
+From the above chart, wine quality ratings range between 3-9 rating. Although the rating valued are in numeric values, they seem to serve as discrete ranking categories rather then continuous scoring values. 
 
-Additionally, the sample size is too smalle for some of the extreme values such as 3, 4 or 9. It is maybe useful to group the rating categories to increase each rating's sample size as follows.
-
-
-
-
-    
-![png](wine_EDA_files/wine_EDA_15_0.png)
-    
-
-
-
-#### Distribution of type of wine
+Moreover, most of the wine are rated as 5 and 6 ratings. On the other hand, the sample size is too small for more extreme rating values such as 3, 4 or 9. Therefore, it may be useful to group the rating categories to increase each rating's sample size as follows.
 
 
 
 
     
-![png](wine_EDA_files/wine_EDA_17_0.png)
+![png](wine_EDA_files/wine_EDA_16_0.png)
     
 
 
 
-There are roughly 3 times more white wine than red wine in this data set. So the data is not balanced, which is consistent with the data description.
+#### Distribution of wine type
+
+
+
+
+    
+![png](wine_EDA_files/wine_EDA_18_0.png)
+    
+
+
+
+There are roughly 3 times more white wine than red wine in this data set. So the data is not balanced, which is consistent with the earlier description in the data summary.
 
 #### Distribution of other numeric features
 
@@ -607,61 +614,77 @@ There are roughly 3 times more white wine than red wine in this data set. So the
 
 
     
-![png](wine_EDA_files/wine_EDA_20_0.png)
+![png](wine_EDA_files/wine_EDA_21_0.png)
     
 
 
 
-Most of the feature distributions above are right-skewed (exept for probability `pH`).
+Most of the feature distributions above are right-skewed (except for maybe `pH`, which seems to be a bit more symmetrical).
 
-Distribution of `total_sulfur dioxide` feature are also bi-modal
+The distribution of `total_sulfur dioxide` feature is also bi-modal
 
-Features like `residual_sugar`, `density`, or `chlorides` seem have extreme outliers given its distribution is highly right-skewed.
+Features like `residual_sugar`,`chlorides`, `free sulfur dioxide` seem to have extreme outliers given its distribution is highly right-skewed.
 
 ## Bivariate Analysis
 
-#### Correlation matrix
+#### Pairwise relationship between input features
+
+We are trying to examine the degree of correlation between the numeric features with the following correlation matrix
+
+    R[write to console]: -- Attaching packages --------------------------------------- tidyverse 1.3.0 --
+    
+    R[write to console]: v ggplot2 3.3.2     v purrr   0.3.4
+    v tibble  3.0.4     v dplyr   1.0.2
+    v tidyr   1.1.2     v stringr 1.4.0
+    v readr   1.4.0     v forcats 0.5.0
+    
+    R[write to console]: -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+    x dplyr::filter() masks stats::filter()
+    x dplyr::lag()    masks stats::lag()
+    
+    R[write to console]: Registered S3 method overwritten by 'GGally':
+      method from   
+      +.gg   ggplot2
+    
+    
 
 
     
-![png](wine_EDA_files/wine_EDA_24_0.png)
+![png](wine_EDA_files/wine_EDA_25_1.png)
     
 
 
-We noticed that there is very high positive correlation between `free_sulfur_dioxide` and `total_sulfur_dioxide`, which make sense.
+We noticed that there is very high positive correlation between `free_sulfur_dioxide` and `total_sulfur_dioxide`, which makes sense as they both contain sulfur dioxide.
 
-`density` is positively correlated with `chlorides`, `residual_sugar`, `volatile_acidity`, `fixed_acidity`, but is negatively correlated with `alcohol` level, which seems to suggest that high density wine has less acohol content.
-
+`density` is positively correlated with `chlorides`, `residual_sugar`, `volatile_acidity`, `fixed_acidity`, but is negatively correlated with `alcohol` level, which seems to suggest that high density wine seem to associated with less acohol content, more chlorides, residual sugar and acidity.
 
 `residual_sugar` also seems to have strong positive relation with `free_sulfur_dioxide`, `total_sulfur_dioxide` level and `density`
 
 
-We can explore these relationship further in the scattered plot between these pairs of features as well as their relationships with the target `quality`
+We can explore these relationship further in the scattered plot between these pairs of features as well as their relationships with the target `quality` as follow
 
-#### Pairwise relationship
-
-**Density and other features**
+**a) Density and other features**
 
 
 
 
     
-![png](wine_EDA_files/wine_EDA_28_0.png)
+![png](wine_EDA_files/wine_EDA_29_0.png)
     
 
 
 
 The above chartes seems to confirmed findings from the corelation matrix where `density` is positively correlated with `chlorides`, `residual sugar`, `volatile acidity`, `fixed acidity` and negatively correlted to `alcohol`. These correlations seems to be comparables between red wine and white wine as the data clouds of the respective wine type seem to overlap in most plots, saving for `residual sugar`. This is also understand about give white wine seems to be more tangy than red wine.
 
-We also notice that `residual sugar` seems to have noticable positive association with `sulfur dioxide` level. Let's further explore this relation ship with the plot below by wine type.
+We also notice that `residual sugar` seems to have noticable positive association with `sulfur dioxide` level. Let's further explore this relationship with the plot below by wine type.
 
-**Residual suger and sulfur dioxide level**
+**b) Residual sugar and sulfur dioxide level**
 
 
 
 
     
-![png](wine_EDA_files/wine_EDA_31_0.png)
+![png](wine_EDA_files/wine_EDA_32_0.png)
     
 
 
@@ -672,33 +695,33 @@ An interesting trend here is that the positive relationship between `residual su
 
 
     
-![png](wine_EDA_files/wine_EDA_34_0.png)
+![png](wine_EDA_files/wine_EDA_35_0.png)
     
 
 
-Based on wine quality composition plot above, there seems to be more excellent white wines
+Based on wine quality composition plot above, it seems that there are more excellent white wines
 
-For the numeric features, we look at their distribution in the respective wine quality group in the chart below.
+For the rest of the features, we look at their distribution in the respective wine quality group in the chart below.
 
 
 
 
     
-![png](wine_EDA_files/wine_EDA_37_0.png)
+![png](wine_EDA_files/wine_EDA_38_0.png)
     
 
 
 
-We can see that the `alcohol` level for excellent wine seems to be noticeably higher than that of normal or poor wine. Excellent wine also lower `density` than lower-quality wine. This agrees with our earlier correlation analysis between the features.
+We can see that the `alcohol` level for excellent wine seems to be noticeably higher than that of normal or poor wine. Excellent wine also have lower `density` than lower-quality wine. This agrees with our earlier correlation analysis between these features.
 
 Better ranked wine also seem to have higher `free sulfur dioxide` level than poor wine though the relationship is not that clear based on the boxplot.
 
-High `volatile acidility` also seems to be indicative of better wine.
+Lower `volatile acidility` also seems to be indicative of better wine.
 
-`citrid acid` level for excelent wine only restrict within the 0.0-0.8 range.
+On a minor note, the range for `citrid acid` level for excelent wine seems to be more concentrated, only restricting within the 0.0-0.8 range.
 
 ## Summary of Insights from EDA
 
-After the EDA, we see that wine quality ranking seems to be more likely to associate with `alcohol`, `density`,  `free sulfur dioxide`, `volatile acidity`, `citric acid`. Hence a multiclass linear classification could be appropriate to estimate the impact each features have on wine quality ranking.
+After the EDA, we see that wine quality ranking seems to be more likely to associate with `alcohol`, `density`,  `free sulfur dioxide`, `volatile acidity`, `wine type` than the rest of the input features. Hence a multiclass linear classification could be appropriate to estimate the impact each features have on wine quality ranking.
 
-We also note that `density` and `alcohol` are highly negatively correlated. We might pick either element to put in our model. On the other hand, the smaller correlation among the above-mentioned variables and the fact that the output `quality_rank` are imbalanced are issues that we should take note and find ways to elevate of when conducting our research method and modeling subsequently.
+We also note that `density` and `alcohol` are highly negatively correlated. We might pick either element to put in our model. On the other hand, the facts that (i) there are correlation between the above-mentioned variables and (ii) the feature `wine_type` and output `quality_rank`are imbalanced are issues that we should take note and find ways to elevate of when conducting our research method and modeling subsequently.
