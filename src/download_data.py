@@ -1,5 +1,6 @@
 # author: UBC Master of Data Science - Group 33
 # date: 2020-11-21
+# Modified code from https://github.com/ttimbers/breast_cancer_predictor
 
 """Downloads data csv data which its delimiter is ';' from the web to a local filepath as either a csv file format.
 
@@ -19,10 +20,12 @@ opt = docopt(__doc__)
 
 def main(url, out_file):
   # Test validiliy of URL
-  request = requests.get(url)
-  if request.status_code != 200:
-    print('The URL is invaild')
-    return
+  try: 
+    request = requests.get(url)
+    request.status_code == 200
+  except Exception as req:
+    print("Provied URL is invalid.")
+    print(req)
   
   # Download data
   data = pd.read_csv(url,  delimiter=';')
