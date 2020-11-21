@@ -12,9 +12,9 @@ In this project we are trying to predict the quality of a given wine sample usin
 
   We plan to build a predictive classification model to provide the standardized metric discussed above. In order for the model to abide by the golden rule, we plan to split the data into train and test sets (80% - 20% respectively) and perform exploratory data analysis in order to assess any class imbalance, outliers that needs to be considered when scouting for best model to fit our needs. (ADD WHAT EDA IS INCLUDED IN THE EDA FILE LIKE THE PLOT)
 	
-  The outcome or the Standardized metric we are trying to establish is to classify all wines into three classes (Bad, Good, Excellent). One likely model suitable for this classification is linear regression and set a threshold for each class in the predicted probabilities. Since our data set is reasonably sized with 1598 observations, we can choose a higher cross-validation of ~50 folds. We will use this accuracy to tune our model for the best fit. After doing so, we re-fit the model on the entire training data set, and then evaluate it’s performance on the test data set. This gives a deeper understanding of our model. We will use this information to address classification errors and report them as a table in the final report.
+  The outcome or the Standardized metric we are trying to establish is to classify all wines into three classes (Poor, Normal, Excellent). One likely model suitable for this classification is linear regression and set a threshold for each class in the predicted probabilities. Since our data set is reasonably sized with 1598 observations, we can choose a higher cross-validation of ~50 folds. We will use this accuracy to tune our model for the best fit. After doing so, we re-fit the model on the entire training data set, and then evaluate it’s performance on the test data set. This gives a deeper understanding of our model. We will use this information to address classification errors and report them as a table in the final report.
 
-For this Milestone we have performed an EDA on the data set which can be found here (ADD LINK)
+For this Milestone we have performed an EDA on the data set which can be found here <a href=https://github.com/UBC-MDS/Wine_Quality_Predictor/blob/main/eda>here</a>
  
 
 
