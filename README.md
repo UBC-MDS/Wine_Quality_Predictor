@@ -55,7 +55,7 @@ python src/download_data.py --url="https://archive.ics.uci.edu/ml/machine-learni
 
 
 # render final report
-#{5TH SCRIPT}
+jupyter nbconvert  --no-input --no promt --to markdown reports/report.ipynb
 ```
 
 ## Dependencies
