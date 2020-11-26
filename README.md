@@ -55,7 +55,8 @@ python src/download_data.py --url="https://archive.ics.uci.edu/ml/machine-learni
 
 
 # render final report
-jupyter nbconvert  --no-input --no promt --to markdown reports/report.ipynb
+Rscript -e "rmarkdown::render('reports/report.Rmd', output_format = 'github_document')"
+
 ```
 
 ## Dependencies
