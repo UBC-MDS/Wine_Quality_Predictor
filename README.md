@@ -39,9 +39,14 @@ conda activate wine_env
 ```
 2. Download wine data set in data directory
 ```bash
-python src/download_data.py --url="https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv" --out_file="data/winequality-red.csv"
-python src/download_data.py --url="https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv" --out_file="data/winequality-white.csv"
+python src/download_data.py --url="https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv" --out_file="data/raw/winequality-red.csv"
+python src/download_data.py --url="https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv" --out_file="data/raw/winequality-white.csv"
 ```
+3. Pre-processing wine data set and storing it in data directory
+```bash
+python src/pre_processing_wine.py --in_file_1="data/raw/winequality-red.csv" --in_file_2="data/raw/winequality-white.csv" --out_dir="data/processed/"
+```
+
 ## Dependencies
 
 To run this project, please install the required dependencies from [here](https://github.com/UBC-MDS/Wine_Quality_Predictor/blob/main/wine_env.yml)
