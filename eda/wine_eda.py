@@ -20,37 +20,10 @@ alt.data_transformers.disable_max_rows();
 # 
 # There are two datasets for red and white wine samples. For each wine sample observation , the inputs contains measurements of various objective physicochemical tests, and the output is the median wine quality ratings given by experts on the scale from 0 (very bad) and 10 (very excellent).The author notes that data on grape types, wine brand, wind selling price among other are not available due to privacy and logistics issues. There are 1599 observations for red wine and 4898 observations of white wine.
 
-# ## Data Import TO BE REPLACED
-
-def read_input_data():
-    red_wine = pd.read_csv('../data/raw/winequality-red.csv', sep = ";")
-    white_wine = pd.read_csv('../data/raw/winequality-white.csv', sep = ";")
 
 
-    white_wine['type'] = 'white'
-    red_wine['type'] = 'red'
-    data = pd.concat([white_wine, red_wine], axis = 0)
-
-    #Target distritbution plot
-
-    distribution_plots = alt.Chart(data, title = "Distribution of wine quality").mark_bar().encode(
-        alt.X('quality:Q', bin = alt.Bin(maxbins = 50), title = 'Wine quality',
-            axis=alt.Axis(values=np.arange(3,10))),
-        alt.Y('count():Q'),
-        alt.Tooltip('count():Q')
-    ).properties(height = 100)
-    save(distribution_plots, 'wine_EDA_files/distribution_of_wine_quality.png')
-
-
-    conditions = [
-        (data['quality'].eq(3) | data['quality'].eq(4)),
-        (data['quality'].eq(5) | data['quality'].eq(6)),
-        (data['quality'].eq(7) | data['quality'].eq(8) | data['quality'].eq(9))
-    ]
-
-    ranks = ['poor','normal','excellent']
-    data['quality_rank'] = np.select(conditions, ranks) 
-# Attribution: https://stackoverflow.com/questions/54653356/case-when-function-from-r-to-python
+def read_input_data(input_path):
+    data = pd.read_csv(input_path)
     return data 
 
 
@@ -113,8 +86,13 @@ def generate_eda_plots(data):
 
 
 
-    wine_quality_rank = alt.Chart(data, title="Wine Quality Rank").mark_bar().encode(
-        x=alt.X('count()'),
+    wine_quality_count = data[['type', 'quality_rank', 'quality']].groupby(['type', 'quality_rank']).count().reset_index()
+    wine_type_count = data[['type', 'quality_rank', 'quality']].groupby(['type']).count().reset_index()
+    merged_count = wine_quality_count.merge(wine_type_count, on=['type'])
+    merged_count['ratio'] = merged_count['quality_x']/ merged_count['quality_y']
+    merged_count = merged_count.rename(columns={"quality_rank_x": "quality_rank"})
+    wine_quality_rank = alt.Chart(merged_count, title="Wine Quality Rank").mark_bar().encode(
+        x=alt.X('ratio'),
         y='type',
         color='quality_rank'
     )
@@ -140,7 +118,7 @@ def save_plots(output_dir, plots_dict):
             print(e)
 
 def main(input_path, output_dir):
-    data = read_input_data()
+    data = read_input_data(input_path)
     plots_dict = generate_eda_plots(data)
     save_plots(output_dir, plots_dict)
 
