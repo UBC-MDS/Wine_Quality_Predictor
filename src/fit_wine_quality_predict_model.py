@@ -132,7 +132,7 @@ def main(in_file_1, out_dir):
         'mlpclassifier__max_iter': [300,500,450,200,300]
     }
 
-    random_search = RandomizedSearchCV(rf_pipeline, param_distributions=param_dist, n_jobs=-1, n_iter=50, cv=5)
+    random_search = RandomizedSearchCV(rf_pipeline, param_distributions=param_dist, n_jobs=-1, n_iter=50, cv=5, scoring = 'f1_micro')
     random_search.fit(X_train, y_train)
     best_model_pipe = random_search.best_estimator_
 
