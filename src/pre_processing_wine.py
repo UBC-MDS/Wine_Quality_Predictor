@@ -48,19 +48,22 @@ def main(in_file_1, in_file_2, out_dir, split):
     data_train, data_test = train_test_split(data, test_size=0.2, random_state=123)
     # Save data 
     try:
-      data_train.to_csv(out_dir + "processed_train.csv", index = False)
-      data_test.to_csv(out_dir + "processed_test.csv", index = False)
+      data.to_csv(out_dir + "processed.csv", index = False)
     except:
       os.makedirs(os.path.dirname(out_dir))
-      data_train.to_csv(out_dir + "processed_train.csv", index = False)
-      data_test.to_csv(out_dir + "processed_test.csv", index = False)
+      data.to_csv(out_dir + "processed.csv", index = False)
   else:
+    # split data as test and train
+    data_train, data_test = train_test_split(data, test_size=0.2, random_state=123)
     # Save data
     try:
-      data.to_csv(out_dir + "processed.csv", index = False)
+      data_train.to_csv(out_dir + "processed_train.csv", index = False)
+      data_test.to_csv(out_dir + "processed_test.csv", index = False)
     except:
       os.makedirs(os.path.dirname(out_dir))
-      data.to_csv(out_dir + "processed.csv", index = False)
+      data_train.to_csv(out_dir + "processed_train.csv", index = False)
+      data_test.to_csv(out_dir + "processed_test.csv", index = False)
+
 
 if __name__ == "__main__":
   main(opt["--in_file_1"], opt["--in_file_2"], opt["--out_dir"], opt["--split"])
