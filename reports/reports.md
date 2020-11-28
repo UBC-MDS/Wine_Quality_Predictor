@@ -1,7 +1,7 @@
 Predicting wine quality using measurements of physiochemical tests
 ================
 Alex Truong, Bruhat Musinuru, Rui Wang and Sang Yoon Lee </br>
-2020-11-26 (updated: 2020-11-27)
+2020-11-26 (updated: 2020-11-28)
 
   - [Summary](#summary)
   - [Introduction](#introduction)
@@ -13,15 +13,21 @@ Alex Truong, Bruhat Musinuru, Rui Wang and Sang Yoon Lee </br>
 
 ## Summary
 
-For this analysis, we conduct the multi-class ridge model in order to
-understand the importance of certain wine attributes obtained from
-various physicochemical tests on the wine quality. The results showed
-that {BLAH BLAH} with XX% accuracy on validation set.
+For this analysis, we conduct the {neutral network Multi-layer
+Perception (MLP) model} in order to try to predict the different wine
+quality based on the wine attributes obtained from various
+physicochemical tests such as alcohol, sulfur diocide, fixed acidity,
+residual sugar. The results showed that {MPL yield robust results} with
+80% accuracy and 80% f1- score (i.e. a weighted average metric of the
+precision and recall) on validation set. When we run the model on our
+test set, we also have comparably high score at 80% accuracu and
+f1-score. However, it incorrectly predicts {XX cases from normal wine to
+be excellent wine - talk about confusion matrix}.
 
-Therefore, we believe this model could serve as one of scientific and
-systematic ways to classify wine as first cut before win expert’s
-assessment, which could be useful for wine ratings institutes that needs
-to classify various wine’s submissions.
+As the rate of misclassification is not high and the impact can be
+corrected in further assessment, we believe this model could decent
+serve its purpose as a wine predictor to conduct first-cut wine
+classification, which could help speed up the wink ratings process.
 
 ## Introduction
 
@@ -61,18 +67,32 @@ observations of white wine.
 
 ### Analysis
 
+At the preprocessing stage, we decided to combine the red and white data
+set as well as group the data in bigger classification, namely “poor”,
+“normal” and “excellent” for scale “1-4”, “5-6” and “7-9” so as to
+have bigger sample size. We acknowledge that the data is imbalanced,
+hence instead of only using accuracy based to judge the model
+performance, we also include f1-score and use it as our main assessment
+metric. f-1 score is metric that combine both the precision and recall
+metrics, which focus on the false negative and false positive rate of
+the data and would be appropriate to use with an imbalanced data set.
+
 In this project we are trying to predict the quality of a given wine
-sample using its features, composition and characteristics and
-{multi-class ridge model}
+sample using wine attributes obtained from various physicochemical tests
+and the {neutral network Multi-layer Perception (MLP) model. We decided
+to pick this model as the model that yield the best after running the
+various machine learning model through the train dataset and comparing
+their performance based on f1-score}
 
-{write more about the models were chosen, paper}
+{write more about paper}
 
-The R and Python programming languages (R Core Team 2019; Van Rossum and
-Drake 2009) and the following R and Python packages were used to perform
-the analysis: docopt (de Jonge 2018), knitr (Xie 2014), tidyverse
-(Wickham 2017), kableExtra (Zhu 2020), scikit-learn (Pedregosa et al.
-2011), docoptpython (Keleshev 2014). The code used to perform the
-analysis and create this report can be found
+The Python and R programming languages (R Core Team 2019; Van Rossum and
+Drake 2009) and the following Python and R packages were used to perform
+the analysis: scikit-learn (Pedregosa et al. 2011), docoptpython
+(Keleshev 2014), docopt (de Jonge 2018), knitr (Xie 2014), tidyverse
+(Wickham 2017), kableExtra (Zhu 2020) {to add more based on revised
+yml}. The code used to perform the analysis and re-create this report
+can be found
 [here](https://github.com/athy9193/Wine_Quality_Predictor#usage)
 
 ## Results & Discussion
@@ -83,29 +103,23 @@ quality wine seems to be more associated with higher `alcohol` level and
 lower `density`. Lower `volatile acidity` also seems to be indicative of
 better wine. Better ranked wine also seem to have `higher free sulfur
 dioxide` level than poor wine though the relationship is not that clear
-based on the plot. The rest of the features, which do not seems be very
-distinguishable among different quality wine, are omitted when we run
-our model.
+based on the plot. The rest of the features do not seems be very
+distinguishable among different quality wine.
 
 <img src="../eda/wine_EDA_files/wine_quality_rank_per_feature.png" width="939" />
 
 {To discuss the results from multi-class ridge, paper} {To add the
-result table} {PLACE HOLDER FROM MILESTONE 1, TO REVISED
-
-The research was conducted using Python (Van Rossum and Drake 2009)
-language and package.
-
-We plan to build a predictive classification model to provide the
-standardized metric discussed above. In order for the model to abide by
-the golden rule, we plan to split the data into train and test sets
-(80%-20% respectively) and perform exploratory data analysis in order to
-assess any class imbalance, outliers that needs to be considered when
-scouting for best model to fit our needs. After the EDA, we see that
-wine quality ranking seems to be more likely to associate with alcohol,
-density, free sulfur dioxide, volatile acidity, wine type than the rest
-of the input features. Hence a multiclass linear classification could be
-appropriate to estimate the impact each features have on wine quality
-ranking.
+result table} {PLACE HOLDER FROM MILESTONE 1, TO REVISED We plan to
+build a predictive classification model to provide the standardized
+metric discussed above. In order for the model to abide by the golden
+rule, we plan to split the data into train and test sets (80%-20%
+respectively) and perform exploratory data analysis in order to assess
+any class imbalance, outliers that needs to be considered when scouting
+for best model to fit our needs. After the EDA, we see that wine quality
+ranking seems to be more likely to associate with alcohol, density, free
+sulfur dioxide, volatile acidity, wine type than the rest of the input
+features. Hence a multiclass linear classification could be appropriate
+to estimate the impact each features have on wine quality ranking.
 
 The outcome or the Standardized metric we are trying to establish is to
 classify all wines into three classes (Poor, Normal, Excellent). One
@@ -124,7 +138,8 @@ obtaining a more balanced data set for training and cross-validation.
 More feature engineer and selection could be conducted to minimize the
 affect of correlation among the explanatory variable. Furthermore, in
 order to assess the robustness of the predicting model, we need to test
-the model with deployment data in real world.
+the model with deployment data in real world besides testing with our
+test data.
 
 # References
 
