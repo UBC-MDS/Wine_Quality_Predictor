@@ -96,11 +96,14 @@ performance based on f1-score}
 The Python and R programming languages (R Core Team 2019; Van Rossum and
 Drake 2009) and the following Python and R packages were used to perform
 the analysis: scikit-learn (Pedregosa et al. 2011), docoptpython
-(Keleshev 2014), docopt (de Jonge 2018), knitr (Xie 2014), tidyverse
-(Wickham 2017), kableExtra (Zhu 2020) {to add more based on revised
-yml}. The code used to perform the analysis and re-create this report
-can be found
-[here](https://github.com/athy9193/Wine_Quality_Predictor#usage)
+(Keleshev 2014), docopt (de Jonge 2018), altair (VanderPlas et al.
+2018), vega-lite (Satyanarayan et al. 2017), IPython-ipykernel (Pérez
+and Granger 2007), matplotlib (Hunter 2007), scipy (Virtanen et al.
+2020), numpy (Harris et al. 2020), pandas (McKinney and others 2010),
+graphviz (Ellson et al. 2001), pandas-profiling (Brugman 2019), knitr
+(Xie 2014), tidyverse (Wickham 2017), kableExtra (Zhu 2020). The code
+used to perform the analysis and re-create this report can be found
+[here](https://github.com/UBC-MDS/Wine_Quality_Predictor#usage)
 
 ## Results & Discussion
 
@@ -152,6 +155,13 @@ test data.
 
 <div id="refs" class="references hanging-indent">
 
+<div id="ref-pandasprofiling2019">
+
+Brugman, Simon. 2019. “pandas-profiling: Exploratory Data Analysis for
+Python.” <https://github.com/pandas-profiling/pandas-profiling>.
+
+</div>
+
 <div id="ref-cortez2009modeling">
 
 Cortez, Paulo, António Cerdeira, Fernando Almeida, Telmo Matos, and José
@@ -175,6 +185,15 @@ Sciences. <http://archive.ics.uci.edu/ml>.
 
 </div>
 
+<div id="ref-graphviz">
+
+Ellson, John, Emden Gansner, Lefteris Koutsofios, Stephen North, Gordon
+Woodhull, Short Description, and Lucent Technologies. 2001. “Graphviz -
+Open Source Graph Drawing Tools.” In *Lecture Notes in Computer
+Science*, 483–84. Springer-Verlag.
+
+</div>
+
 <div id="ref-er2016classification">
 
 Er, Yeşim, and Ayten Atasoy. 2016. “The Classification of White Wine and
@@ -183,10 +202,35 @@ Journal of Intelligent Systems and Applications in Engineering*, 23–26.
 
 </div>
 
+<div id="ref-harris2020array">
+
+Harris, Charles R., K. Jarrod Millman, St’efan J. van der Walt, Ralf
+Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, et al. 2020.
+“Array Programming with NumPy.” *Nature* 585 (7825): 357–62.
+<https://doi.org/10.1038/s41586-020-2649-2>.
+
+</div>
+
+<div id="ref-matplotlib">
+
+Hunter, J. D. 2007. “Matplotlib: A 2D Graphics Environment.” *Computing
+in Science & Engineering* 9 (3): 90–95.
+<https://doi.org/10.1109/MCSE.2007.55>.
+
+</div>
+
 <div id="ref-docoptpython">
 
 Keleshev, Vladimir. 2014. *Docopt: Command-Line Interface Description
 Language*. <https://github.com/docopt/docopt>.
+
+</div>
+
+<div id="ref-pandas">
+
+McKinney, Wes, and others. 2010. “Data Structures for Statistical
+Computing in Python.” In *Proceedings of the 9th Python in Science
+Conference*, 445:51–56. Austin, TX.
 
 </div>
 
@@ -198,6 +242,14 @@ Python.” *Journal of Machine Learning Research* 12: 2825–30.
 
 </div>
 
+<div id="ref-IPython">
+
+Pérez, Fernando, and Brian E. Granger. 2007. “IPython: A System for
+Interactive Scientific Computing.” *Computing in Science and
+Engineering* 9 (3): 21–29. <https://doi.org/10.1109/MCSE.2007.53>.
+
+</div>
+
 <div id="ref-R">
 
 R Core Team. 2019. *R: A Language and Environment for Statistical
@@ -206,10 +258,37 @@ Computing*. Vienna, Austria: R Foundation for Statistical Computing.
 
 </div>
 
+<div id="ref-vega-lite">
+
+Satyanarayan, Arvind, Dominik Moritz, Kanit Wongsuphasawat, and Jeffrey
+Heer. 2017. “Vega-Lite: A Grammar of Interactive Graphics.” *IEEE
+Transactions on Visualization and Computer Graphics* 23 (1): 341–50.
+
+</div>
+
+<div id="ref-altair">
+
+VanderPlas, Jacob, Brian Granger, Jeffrey Heer, Dominik Moritz, Kanit
+Wongsuphasawat, Arvind Satyanarayan, Eitan Lees, Ilia Timofeev, Ben
+Welsh, and Scott Sievert. 2018. “Altair: Interactive Statistical
+Visualizations for Python.” *Journal of Open Source Software* 3 (32):
+1057. <https://doi.org/10.21105/joss.01057>.
+
+</div>
+
 <div id="ref-Python">
 
 Van Rossum, Guido, and Fred L. Drake. 2009. *Python 3 Reference Manual*.
 Scotts Valley, CA: CreateSpace.
+
+</div>
+
+<div id="ref-SciPy">
+
+Virtanen, Pauli, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler
+Reddy, David Cournapeau, Evgeni Burovski, et al. 2020. “SciPy 1.0:
+Fundamental Algorithms for Scientific Computing in Python.” *Nature
+Methods* 17: 261–72. <https://doi.org/10.1038/s41592-019-0686-2>.
 
 </div>
 
