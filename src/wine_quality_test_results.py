@@ -11,6 +11,7 @@ Options:
 --out_dir=<out_dir>          Path (excluding file name) to save the confusion matrix
 """
 import os
+from docopt import docopt
 import string
 from collections import deque
 
@@ -61,8 +62,8 @@ opt = docopt(__doc__)
 def main(in_file_1, in_file_2, out_dir):
 
   # read data and splitting it
-    train_df = pd.read_csv(in_file_1, sep = ";")
-    test_df = pd.read_csv(in_file_2, sep = ";")
+    train_df = pd.read_csv(in_file_1)
+    test_df = pd.read_csv(in_file_2)
 
     X_train = train_df.drop(columns = ['quality'], axis=1)
     y_train = train_df['quality']
