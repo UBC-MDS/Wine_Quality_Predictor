@@ -46,7 +46,7 @@ python src/pre_processing_wine.py --in_file_1="data/raw/winequality-red.csv" --i
 
 
 # create exploratory data analysis figure and write to file
-#{3RD SCRIPT}
+python eda/wine_eda.py -i data/processed/processed.csv -o eda/wine_EDA_files/
 
 
 # tune and test model
@@ -60,7 +60,14 @@ Rscript -e "rmarkdown::render('reports/report.Rmd', output_format = 'github_docu
 
 ## Dependencies
 
-To run this project, please install the required dependencies from [here](https://github.com/UBC-MDS/Wine_Quality_Predictor/blob/main/wine_env.yml) by running the following command at the command line/terminal
+To run this project, please install 
+
+* Python version 3.8.6 and the required dependencies from [here](https://github.com/UBC-MDS/Wine_Quality_Predictor/blob/main/wine_env.yml) by running the following command at the command line/terminal
+
+* R version 4.0.2. and R packages:
+- knitr==1.30
+- kableExtra==1.3.1
+- tidyverse==1.3.0
 
 ```bash
 # create a conda environment using the `wine_env.yml`
