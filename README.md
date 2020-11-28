@@ -64,10 +64,6 @@ To run this project, please install
 
 * Python version 3.8.6 and the required dependencies from [here](https://github.com/UBC-MDS/Wine_Quality_Predictor/blob/main/wine_env.yml) by running the following command at the command line/terminal
 
-* R version 4.0.2. and R packages:
-- knitr==1.30
-- kableExtra==1.3.1
-- tidyverse==1.3.0
 
 ```bash
 # create a conda environment using the `wine_env.yml`
@@ -75,6 +71,10 @@ conda env create --file wine_env.yml
 conda activate wine_env
 ```
 
+* R version 4.0.2. and R packages:
+ - knitr==1.30
+ - kableExtra==1.3.1
+ - tidyverse==1.3.0
 
 
 ## License
