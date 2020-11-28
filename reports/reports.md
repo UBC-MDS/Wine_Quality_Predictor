@@ -112,7 +112,7 @@ because we think it would generalize better.
 
 <div class="figure">
 
-<img src="models_c.png" alt="Table 1: Score results among different machine learning model we have explore" width="1207" />
+<img src="models_c_revised.png" alt="Table 1: Score results among different machine learning model we have explore" width="1207" />
 
 <p class="caption">
 
@@ -166,9 +166,9 @@ was consistent and showed promising results. If we take a look at the
 accuracy scores and f1 scores across cross validation splits, we can see
 that it is pretty consistent which was not the case with many models.
 
-<img src="f1.png" width="439" />
+<img src="f1_revised.png" width="439" />
 
-<img src="Accuracy_plot.png" width="439" />
+<img src="accuracy_plot_revised.png" width="439" />
 
 Figure 2: Accuracy scores and f1 scores across cross validation splits
 for neutral network Multi-layer Perception (MLP) model
@@ -182,7 +182,7 @@ the low end of spectrum.
 
 <div class="figure">
 
-<img src="cf_matrix.png" alt="Figure 3: Confusion Matrix" width="413" />
+<img src="cf_matrix_revised.png" alt="Figure 3: Confusion Matrix" width="413" />
 
 <p class="caption">
 
