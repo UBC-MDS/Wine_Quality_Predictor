@@ -8,7 +8,7 @@ Options:
 --in_file_1=<in_file_1>      Path (including file name) for the processed train data
 --out_dir=<out_dir>          Path (excluding file name) of where to locally write the model
 """
-from docopt import docopt import os
+from docopt import docopt
 from sklearn.externals import joblib
 import os
 import string
