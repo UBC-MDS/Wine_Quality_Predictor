@@ -22,7 +22,7 @@ Here we attempt to build a model to predict the quality of a given wine sample u
  
 ## Report
 
-The final report can be found [here]({TO ADD LINK TO REPORT.MD})
+The final report can be found [here](https://github.com/UBC-MDS/Wine_Quality_Predictor/blob/main/reports/reports.md)
 
 ## Usage
 
