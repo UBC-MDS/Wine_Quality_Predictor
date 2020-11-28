@@ -29,6 +29,14 @@ def read_input_data(input_path):
 
 def generate_eda_plots(data):
     plots_dict = {}
+    distribution_plots = alt.Chart(data, title = "Distribution of wine quality").mark_bar().encode(
+        alt.X('quality:Q', bin = alt.Bin(maxbins = 50), title = 'Wine quality',
+            axis=alt.Axis(values=np.arange(3,10))),
+        alt.Y('count():Q'),
+        alt.Tooltip('count():Q')
+    ).properties(height = 100)
+    plots_dict['distribution_of_wine_quality.png'] = distribution_plots
+
     distribution_plots_regrouped = alt.Chart(data, title = "Distribution of wine quality (regrouped)").mark_bar().encode(
         alt.X('quality_rank:O', title = 'Wine quality rank', sort = ['poor','normal','excellent']),
         alt.Y('count():Q'),
