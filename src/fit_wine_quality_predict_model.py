@@ -8,7 +8,7 @@ Options:
 --in_file_1=<in_file_1>      Path (including file name) for the processed train data
 --out_dir=<out_dir>          Path (excluding file name) of where to locally write the model
 """
-
+from docopt import docopt import os
 from sklearn.externals import joblib
 import os
 import string
@@ -88,7 +88,7 @@ def store_cross_val_results(model_name, scores, results_dict):
     }
 
 def main(in_file_1, out_dir):
-    train_df = pd.read_csv(in_file_1, sep = ";")
+    train_df = pd.read_csv(in_file_1)
     X_train = train_df.drop(columns = ['quality'], axis=1)
     y_train = train_df['quality']
 
