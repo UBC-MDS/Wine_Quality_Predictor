@@ -45,7 +45,7 @@ In this project we are trying to predict the quality of a given wine sample usin
 We eventually decided to pick {neutral network Multi-layer Perception (MLP) model as the model that yield the best after running the various machine learning model through the train dataset and comparing their performance based on f1-score}
 
 
-The Python and R programming languages [@R; @Python] and the following Python and R packages were used to perform the analysis: scikit-learn [@scikit-learn], docoptpython [@docoptpython], docopt [@docopt], altair, vega-cli, vega-lite, ipykernel, matplotlib, scipy, numpy, pandas, requests, graphviz, python-graphviz, jinja, pip, pandas-profiling, knitr [@knitr], tidyverse [@tidyverse], kableExtra [@kableExtra] {to add more based on revised yml}. The code used to perform the analysis and re-create this report can be found [here](https://github.com/athy9193/Wine_Quality_Predictor#usage)
+The Python and R programming languages [@R; @Python] and the following Python and R packages were used to perform the analysis: scikit-learn [@scikit-learn], docoptpython [@docoptpython], docopt [@docopt], altair [@altair], vega-lite [@vega-lite], IPython-ipykernel [@IPython], matplotlib [@matplotlib], scipy [@SciPy], numpy [@harris2020array], pandas [@pandas], graphviz [@graphviz], pandas-profiling [@pandasprofiling2019],  knitr [@knitr], tidyverse [@tidyverse], kableExtra [@kableExtra]. The code used to perform the analysis and re-create this report can be found [here](https://github.com/UBC-MDS/Wine_Quality_Predictor#usage)
 
 
 
