@@ -78,13 +78,20 @@ metrics, which focus on the false negative and false positive rate of
 the data and would be appropriate to use with an imbalanced data set.
 
 In this project we are trying to predict the quality of a given wine
-sample using wine attributes obtained from various physicochemical tests
-and the {neutral network Multi-layer Perception (MLP) model. We decided
-to pick this model as the model that yield the best after running the
-various machine learning model through the train dataset and comparing
-their performance based on f1-score}
+sample using wine attributes obtained from various physicochemical
+tests. Based on our literary review, we found that researchers from
+Karadeniz Technical Univeristy used Random Forest Algorithm had also
+tried to classify between red wine and white wine for the same dataset
+(Er and Atasoy 2016). They further used 3 different data mining
+algorithms namely k-nearest-neighbourhood random forests and support
+vector machine learning to classify the quality of both red wine and
+white wine. This motivate us to proceed with to use cross-validation to
+select the best model for our analysis.
 
-{write more about paper}
+We eventually decided to pick {neutral network Multi-layer Perception
+(MLP) model as the model that yield the best after running the various
+machine learning model through the train dataset and comparing their
+performance based on f1-score}
 
 The Python and R programming languages (R Core Team 2019; Van Rossum and
 Drake 2009) and the following Python and R packages were used to perform
@@ -165,6 +172,14 @@ Language*. <https://CRAN.R-project.org/package=docopt>.
 Dua, Dheeru, and Casey Graff. 2017. “UCI Machine Learning Repository.”
 University of California, Irvine, School of Information; Computer
 Sciences. <http://archive.ics.uci.edu/ml>.
+
+</div>
+
+<div id="ref-er2016classification">
+
+Er, Yeşim, and Ayten Atasoy. 2016. “The Classification of White Wine and
+Red Wine According to Their Physicochemical Qualities.” *International
+Journal of Intelligent Systems and Applications in Engineering*, 23–26.
 
 </div>
 
