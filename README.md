@@ -12,11 +12,11 @@ Second milestone of a data analysis project for DSCI 522: Data Science workflows
 
 ## About
 
-Here we attempt to build a model to predict the quality of a given wine sample using its features, composition and characteristics. Traditional methods of categorizing wine are prone to human error and can vary drastically from expert to expert. We propose a data mining approach to predict human wine taste preferences based on complex data analytical algorithms and classification models. This unbiased and human error free metric can provide a standardized metric that can be used for personalized wine recommendation, Quality assessment and comparison unit. It can also be used by wineries as an important metric which could aid in important business decisions and strategies.
+Here we attempt to build a model to predict the quality of a given wine sample using its features, composition and characteristics. Traditional methods of categorizing wine are prone to human error and  time-consuming. We propose a data mining approach to predict human wine taste preferences based on complex data analytical algorithms and classification models. This unbiased and human error free metric can provide a standardized metric that can be used for personalized wine recommendation, quality assessment and comparison unit. It can also be used by wineries as an important metric which could aid in important business decisions and strategies.
 	
-  The data set used in this project is created by Paulo Cortez from the University of Minho in Guimarães, Portugal, and A. Cerdeira, F. Almeida, T. Matos and J. Reis from the Viticulture Commission of the Vinho Verde Region in Porto, Portugal. The two datasets are included are related to red and white vinho verde wine samples, from the north of Portugal. It was sourced from the UCI Machine Learning Repository and can be found [here](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/). Each row in the data set represents summary statistics from a sample of wine based on physicochemical tests with attributes fixed acidity, volatile acidity, citric acid, residual sugar, pH, etc.  
+The data set used in this project is created by Paulo Cortez from the University of Minho in Guimarães, Portugal, and A. Cerdeira, F. Almeida, T. Matos and J. Reis from the Viticulture Commission of the Vinho Verde Region in Porto, Portugal. The two datasets are included are related to red and white vinho verde wine samples, from the north of Portugal. It was sourced from the UCI Machine Learning Repository and can be found [here](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/). Each row in the data set represents summary statistics from a sample of wine based on physicochemical tests with attributes fixed acidity, volatile acidity, citric acid, residual sugar, pH, etc.  
 
-  We built a classification model using Multi-layer Perceptron classifier to predict the class of a given wine. To summarise, our model classifies wine into one of three classses, bad-normal-good. We have had good prediction accuracies with this model and through our analysis we also found that it generalizes very well. For complete report , please check the report section.
+  We built a classification model using Multi-layer Perceptron classifier to predict the quality class of a given wine. To summarise, our model classifies wine into one of three classses, poor-normal-excellent. We have had good prediction accuracies and f1-score with this model and through our analysis we also found that it generalizes well. For complete report , please check the report section.
 
 
  
@@ -46,11 +46,11 @@ python eda/wine_eda.py -i data/processed/processed.csv -o eda/wine_EDA_files/
 
 
 # tune and test model
-#{4TH SCRIPT}
+#{python src/fit_wine_quality_predict_model.py --in_file_1="data/processed/processed_train" --out_dir="src/"
 
 
 # render final report
-Rscript -e "rmarkdown::render('reports/report.Rmd', output_format = 'github_document')"
+Rscript -e "rmarkdown::render('reports/reports.Rmd', output_format = 'github_document')"
 
 ```
 
