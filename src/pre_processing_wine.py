@@ -12,7 +12,7 @@ Options:
 --in_file_1=<in_file_1>      Path (including file name) to first raw data which is for red wine
 --in_file_2=<in_file_2>      Path (including file name) to second raw data which is for white wine
 --out_dir=<out_dir>          Path (excluding file name) of where to locally write the file
-[--split=<split>]            Condsider wheater splict data or not. if --splict ='n', code will split data
+[--split=<split>]            Condsider wheater splict data or not. if --splict ='n', code will not split data
 """
   
 from docopt import docopt
@@ -44,9 +44,6 @@ def main(in_file_1, in_file_2, out_dir, split):
   data['quality_rank'] = np.select(conditions, ranks)
 
   if split == "n":
-    # split data as test and train
-    data_train, data_test = train_test_split(data, test_size=0.2, random_state=123)
-    # Save data 
     try:
       data.to_csv(out_dir + "processed.csv", index = False)
     except:
