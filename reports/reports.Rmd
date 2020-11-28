@@ -68,7 +68,7 @@ knitr::include_graphics("f1.png")
 ```
 
 ```{r}
-knitr::include_graphics("accuracy_plot.png")
+knitr::include_graphics("Accuracy_plot.png")
 ```
 
 

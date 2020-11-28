@@ -168,7 +168,7 @@ that it is pretty consistent which was not the case with many models.
 
 <img src="f1.png" width="439" />
 
-<img src="accuracy_plot.png" width="439" />
+<img src="Accuracy_plot.png" width="439" />
 
 Figure 2: Accuracy scores and f1 scores across cross validation splits
 for neutral network Multi-layer Perception (MLP) model
