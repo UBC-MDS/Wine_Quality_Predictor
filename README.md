@@ -26,7 +26,7 @@ For this Milestone we have performed an EDA on the data set which can be found <
  
 ## Report
 
-The final report can be found [here]({TO ADD LINK TO REPORT.MD})
+The final report can be found [here](https://github.com/UBC-MDS/Wine_Quality_Predictor/blob/main/reports/reports.md)
 
 ## Usage
 
