@@ -21,7 +21,8 @@ library(tidyverse)
 
 For this analysis, we used the neutral network Multi-layer Perception (MLP) model in order to try to predict wine quality based on the different wine attributes obtained from physicochemical tests such as alcohol, sulfur dioxide, fixed acidity, residual sugar. When we test it with the different validation data sets, the model yield robust results with 80% accuracy and 80% f1- score (a weighted average metric between precision and recall rate). We also have comparably high score at 80% accuracy and f1-score when we run the model on our test set. Based on these results, we opine that that the model seems to generalize well based on the test set predictions. 
 
-However, it incorrectly classifies 15% of the data in the higher end of spectrum (between normal and excellent). This could be due to class imbalance present in the data set where normal samples outnumber excellent by roughly three times. Improving the data collection methods to reduce the data class imbalance and using an appropriate assessment metric for imbalanced data can help to improve our analysis. On the other hand, given the rate of misclassification is not so high and the impact can be corrected in further assessment, we believe this model could decently serve its purpose as a wine predictor to conduct first-cut assessment, which could help speed up the wine ratings process.
+
+However, it incorrectly classifies 13.7% of the data in the lower end of spectrum (between normal and poor). This could be due to class imbalance present in the data set where normal samples outnumber poor by roughly twenty times. Improving the data collection methods to reduce the data class imbalance and using an appropriate assessment metric for imbalanced data can help to improve our analysis. On the other hand, given the rate of miss-classification is not so high and the impact can be corrected in further assessment, we believe this model could decently serve its purpose as a wine predictor to conduct first-cut assessment, which could help speed up the wine ratings process.
 
 ## Introduction
 
@@ -63,21 +64,15 @@ knitr::include_graphics("../eda/wine_EDA_files/wine_quality_rank_per_feature.png
 
 Since this is a multi-class classification, our goal was to find a model that was consistent and able to recognize patterns from our data. We choose to use a neutral network Multi-layer Perception (MLP) model as it was consistent and showed promising results. If we take a look at the accuracy scores and f1 scores across cross validation splits, we can see that it is pretty consistent which was not the case with many models.
 
-```{r}
-knitr::include_graphics("f1_revised.png")
-```
-
-```{r}
-knitr::include_graphics("accuracy_plot_revised.png")
-```
+```{r, echo=FALSE,out.width="50%", out.height="20%",fig.cap="Figure 2: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model",fig.show='hold',fig.align='center'}
+knitr::include_graphics(c("f1_revised.png","accuracy_plot_revised.png"))
+``` 
 
 
-Figure 2: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model
-
-Our model performed quite well on the test data as well. If we take a look at the confusion matrix below. As we discussed earlier, the prediction at the higher end of wine quality spectrum is acceptable. As we can see from the confusion matrix below, \~15% error rate for the higher end of spectrum and also very acceptable false classifications in the low end of spectrum.
+Our model performed quite well on the test data as well. If we take a look at the confusion matrix below. As we discussed earlier, the prediction at the lower end of wine quality spectrum is acceptable. As we can see from the confusion matrix below, ~13% error rate for the lower end of spectrum and also very acceptable false classifications in the high end of spectrum.
 
 ```{r, fig.cap = "Figure 3: Confusion Matrix"}
-knitr::include_graphics("cf_matrix_revised.png")
+knitr::include_graphics("../results/final_model_quality.png")
 ```
 
 Having said that the research also need further improvement in terms of obtaining a more balanced data set for training and cross-validation. More feature engineer and selection could be conducted to minimize the affect of correlation among the explanatory variable. Furthermore, in order to assess the robustness of the predicting model, we need to test the model with deployment data in real world besides testing with our test data.
