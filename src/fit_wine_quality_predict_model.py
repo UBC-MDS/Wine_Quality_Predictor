@@ -92,8 +92,8 @@ def store_cross_val_results(model_name, scores, results_dict):
 def main(in_file_1, out_dir):
     # read data and combine two data set vertically
     train_df = pd.read_csv(in_file_1)
-    X_train = train_df.drop(columns = ['quality'])
-    y_train = train_df['quality']
+    X_train = train_df.drop(columns = ['quality','quality_rank' ])
+    y_train = train_df['quality_rank']
     
     #-----------------------------------------------------------------------------------------------------------------------------
     #PreProcessor 
