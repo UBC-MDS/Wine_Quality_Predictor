@@ -24,17 +24,16 @@ accuracy and f1-score when we run the model on our test set. Based on
 these results, we opine that that the model seems to generalize well
 based on the test set predictions.
 
-However, it incorrectly classifies 15% of the data in the higher end of
-spectrum (between normal and excellent). This could be due to class
-imbalance present in the data set where normal samples outnumber
-excellent by roughly three times. Improving the data collection methods
-to reduce the data class imbalance and using an appropriate assessment
-metric for imbalanced data can help to improve our analysis. On the
-other hand, given the rate of misclassification is not so high and the
-impact can be corrected in further assessment, we believe this model
-could decently serve its purpose as a wine predictor to conduct
-first-cut assessment, which could help speed up the wine ratings
-process.
+However, it incorrectly classifies 13.7% of the data in the lower end of
+spectrum (between normal and poor). This could be due to class imbalance
+present in the data set where normal samples outnumber poor by roughly
+twenty times. Improving the data collection methods to reduce the data
+class imbalance and using an appropriate assessment metric for
+imbalanced data can help to improve our analysis. On the other hand,
+given the rate of miss-classification is not so high and the impact can
+be corrected in further assessment, we believe this model could decently
+serve its purpose as a wine predictor to conduct first-cut assessment,
+which could help speed up the wine ratings process.
 
 ## Introduction
 
@@ -166,23 +165,29 @@ was consistent and showed promising results. If we take a look at the
 accuracy scores and f1 scores across cross validation splits, we can see
 that it is pretty consistent which was not the case with many models.
 
-<img src="f1_revised.png" width="439" />
+<div class="figure" style="text-align: center">
 
-<img src="accuracy_plot_revised.png" width="439" />
+<img src="f1_revised.png" alt="Figure 2: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model" width="50%" height="20%" /><img src="accuracy_plot_revised.png" alt="Figure 2: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model" width="50%" height="20%" />
+
+<p class="caption">
 
 Figure 2: Accuracy scores and f1 scores across cross validation splits
 for neutral network Multi-layer Perception (MLP) model
 
+</p>
+
+</div>
+
 Our model performed quite well on the test data as well. If we take a
 look at the confusion matrix below. As we discussed earlier, the
-prediction at the higher end of wine quality spectrum is acceptable. As
-we can see from the confusion matrix below, \~15% error rate for the
-higher end of spectrum and also very acceptable false classifications in
-the low end of spectrum.
+prediction at the lower end of wine quality spectrum is acceptable. As
+we can see from the confusion matrix below, \~13% error rate for the
+lower end of spectrum and also very acceptable false classifications in
+the high end of spectrum.
 
 <div class="figure">
 
-<img src="cf_matrix_revised.png" alt="Figure 3: Confusion Matrix" width="413" />
+<img src="../results/final_model_quality.png" alt="Figure 3: Confusion Matrix" width="640" />
 
 <p class="caption">
 
