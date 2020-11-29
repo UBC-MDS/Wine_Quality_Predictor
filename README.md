@@ -45,10 +45,10 @@ python src/pre_processing_wine.py --in_file_1="data/raw/winequality-red.csv" --i
 python eda/wine_eda.py -i data/processed/processed.csv -o eda/wine_EDA_files/
 
 
-#fitting model
+# fitting model
 python src/fit_wine_quality_predict_model.py --in_file_1="data/processed/processed_train.csv" --out_dir="results/"
 
-#test model
+# test model
 python src/wine_quality_test_results.py --in_file_1="data/processed/processed_train.csv" --in_file_2="data/processed/processed_test.csv" --out_dir="results/"
 
 
