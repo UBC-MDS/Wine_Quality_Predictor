@@ -3,13 +3,13 @@ Predicting wine quality using measurements of physiochemical tests
 Alex Truong, Bruhat Musinuru, Rui Wang and Sang Yoon Lee </br>
 2020-11-26 (updated: 2020-12-04)
 
-  - [Summary](#summary)
-  - [Introduction](#introduction)
-  - [Methods](#methods)
-      - [Data](#data)
-      - [Analysis](#analysis)
-  - [Results & Discussion](#results-discussion)
-  - [References](#references)
+-   [Summary](#summary)
+-   [Introduction](#introduction)
+-   [Methods](#methods)
+    -   [Data](#data)
+    -   [Analysis](#analysis)
+-   [Results & Discussion](#results-discussion)
+-   [References](#references)
 
 ## Summary
 
@@ -74,14 +74,14 @@ observations of white wine.
 ### Analysis
 
 At the preprocessing stage, we decided to combine the red and white data
-set as well as group the data in bigger classification, namely “poor”,
-“normal” and “excellent” for scale “1-4”, “5-6” and “7-9” so as to
-have bigger sample size. We acknowledge that the data is imbalanced,
-hence instead of only using accuracy based to judge the model
-performance, we also include f1-score and use it as our main assessment
-metric. f-1 score is metric that combine both the precision and recall
-metrics, which focus on the false negative and false positive rate of
-the data and would be appropriate to use with an imbalanced data set.
+set as well as group the data in bigger classification, namely “poor,”
+“normal” and “excellent” for scale “1-4,” “5-6” and “7-9” so as to have
+bigger sample size. We acknowledge that the data is imbalanced, hence
+instead of only using accuracy based to judge the model performance, we
+also include f1-score and use it as our main assessment metric. f-1
+score is metric that combine both the precision and recall metrics,
+which focus on the false negative and false positive rate of the data
+and would be appropriate to use with an imbalanced data set.
 
 In this project we are trying to predict the quality of a given wine
 sample using wine attributes obtained from various physicochemical
@@ -112,12 +112,9 @@ because we think it would generalize better.
 <div class="figure">
 
 <img src="models_c_revised.png" alt="Table 1: Score results among different machine learning model we have explore" width="1207" />
-
 <p class="caption">
-
 Table 1: Score results among different machine learning model we have
 explore
-
 </p>
 
 </div>
@@ -140,20 +137,18 @@ Looking at the distribution plot of the respective wine quality group
 interacting with each explanatory features, we can see that higher
 quality wine seems to be more associated with higher `alcohol` level and
 lower `density`. Lower `volatile acidity` also seems to be indicative of
-better wine. Better ranked wine also seem to have `higher free sulfur
-dioxide` level than poor wine though the relationship is not that clear
-based on the plot. The rest of the features do not seems be very
-distinguishable among different quality wine.
+better wine. Better ranked wine also seem to have
+`higher free sulfur dioxide` level than poor wine though the
+relationship is not that clear based on the plot. The rest of the
+features do not seems be very distinguishable among different quality
+wine.
 
 <div class="figure">
 
-<img src="../eda/wine_EDA_files/wine_quality_rank_per_feature.png" alt="Figure 1: Distribution plot between wine quality and various attributes from physicochemical test" width="939" />
-
+<img src="../eda/wine_EDA_files/wine_quality_rank_per_feature.png" alt="Figure 1: Distribution plot between wine quality and various attributes from physicochemical test" width="937" />
 <p class="caption">
-
 Figure 1: Distribution plot between wine quality and various attributes
 from physicochemical test
-
 </p>
 
 </div>
@@ -168,12 +163,9 @@ that it is pretty consistent which was not the case with many models.
 <div class="figure" style="text-align: center">
 
 <img src="f1_revised.png" alt="Figure 2: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model" width="50%" height="20%" /><img src="accuracy_plot_revised.png" alt="Figure 2: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model" width="50%" height="20%" />
-
 <p class="caption">
-
 Figure 2: Accuracy scores and f1 scores across cross validation splits
 for neutral network Multi-layer Perception (MLP) model
-
 </p>
 
 </div>
@@ -188,11 +180,8 @@ the high end of spectrum.
 <div class="figure">
 
 <img src="../results/final_model_quality.png" alt="Figure 3: Confusion Matrix" width="640" />
-
 <p class="caption">
-
 Figure 3: Confusion Matrix
-
 </p>
 
 </div>
@@ -207,16 +196,17 @@ test data.
 
 # References
 
-<div id="refs" class="references hanging-indent">
+<div id="refs" class="references csl-bib-body hanging-indent">
 
-<div id="ref-pandasprofiling2019">
+<div id="ref-pandasprofiling2019" class="csl-entry">
 
-Brugman, Simon. 2019. “pandas-profiling: Exploratory Data Analysis for
-Python.” <https://github.com/pandas-profiling/pandas-profiling>.
+Brugman, Simon. 2019. “<span class="nocase">pandas-profiling:
+Exploratory Data Analysis for Python</span>.”
+<https://github.com/pandas-profiling/pandas-profiling>.
 
 </div>
 
-<div id="ref-cortez2009modeling">
+<div id="ref-cortez2009modeling" class="csl-entry">
 
 Cortez, Paulo, António Cerdeira, Fernando Almeida, Telmo Matos, and José
 Reis. 2009. “Modeling Wine Preferences by Data Mining from
@@ -224,14 +214,14 @@ Physicochemical Properties.” *Decision Support Systems* 47 (4): 547–53.
 
 </div>
 
-<div id="ref-docopt">
+<div id="ref-docopt" class="csl-entry">
 
 de Jonge, Edwin. 2018. *Docopt: Command-Line Interface Specification
 Language*. <https://CRAN.R-project.org/package=docopt>.
 
 </div>
 
-<div id="ref-Dua:2019">
+<div id="ref-Dua:2019" class="csl-entry">
 
 Dua, Dheeru, and Casey Graff. 2017. “UCI Machine Learning Repository.”
 University of California, Irvine, School of Information; Computer
@@ -239,7 +229,7 @@ Sciences. <http://archive.ics.uci.edu/ml>.
 
 </div>
 
-<div id="ref-graphviz">
+<div id="ref-graphviz" class="csl-entry">
 
 Ellson, John, Emden Gansner, Lefteris Koutsofios, Stephen North, Gordon
 Woodhull, Short Description, and Lucent Technologies. 2001. “Graphviz -
@@ -248,7 +238,7 @@ Science*, 483–84. Springer-Verlag.
 
 </div>
 
-<div id="ref-er2016classification">
+<div id="ref-er2016classification" class="csl-entry">
 
 Er, Yeşim, and Ayten Atasoy. 2016. “The Classification of White Wine and
 Red Wine According to Their Physicochemical Qualities.” *International
@@ -256,7 +246,7 @@ Journal of Intelligent Systems and Applications in Engineering*, 23–26.
 
 </div>
 
-<div id="ref-harris2020array">
+<div id="ref-harris2020array" class="csl-entry">
 
 Harris, Charles R., K. Jarrod Millman, St’efan J. van der Walt, Ralf
 Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, et al. 2020.
@@ -265,22 +255,22 @@ Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, et al. 2020.
 
 </div>
 
-<div id="ref-matplotlib">
+<div id="ref-matplotlib" class="csl-entry">
 
-Hunter, J. D. 2007. “Matplotlib: A 2D Graphics Environment.” *Computing
+Hunter, J. D. 2007. “Matplotlib: A 2d Graphics Environment.” *Computing
 in Science & Engineering* 9 (3): 90–95.
 <https://doi.org/10.1109/MCSE.2007.55>.
 
 </div>
 
-<div id="ref-docoptpython">
+<div id="ref-docoptpython" class="csl-entry">
 
 Keleshev, Vladimir. 2014. *Docopt: Command-Line Interface Description
 Language*. <https://github.com/docopt/docopt>.
 
 </div>
 
-<div id="ref-pandas">
+<div id="ref-pandas" class="csl-entry">
 
 McKinney, Wes, and others. 2010. “Data Structures for Statistical
 Computing in Python.” In *Proceedings of the 9th Python in Science
@@ -288,7 +278,7 @@ Conference*, 445:51–56. Austin, TX.
 
 </div>
 
-<div id="ref-scikit-learn">
+<div id="ref-scikit-learn" class="csl-entry">
 
 Pedregosa, F., G. Varoquaux, A. Gramfort, V. Michel, B. Thirion, O.
 Grisel, M. Blondel, et al. 2011. “Scikit-Learn: Machine Learning in
@@ -296,7 +286,7 @@ Python.” *Journal of Machine Learning Research* 12: 2825–30.
 
 </div>
 
-<div id="ref-IPython">
+<div id="ref-IPython" class="csl-entry">
 
 Pérez, Fernando, and Brian E. Granger. 2007. “IPython: A System for
 Interactive Scientific Computing.” *Computing in Science and
@@ -304,7 +294,7 @@ Engineering* 9 (3): 21–29. <https://doi.org/10.1109/MCSE.2007.53>.
 
 </div>
 
-<div id="ref-R">
+<div id="ref-R" class="csl-entry">
 
 R Core Team. 2019. *R: A Language and Environment for Statistical
 Computing*. Vienna, Austria: R Foundation for Statistical Computing.
@@ -312,7 +302,7 @@ Computing*. Vienna, Austria: R Foundation for Statistical Computing.
 
 </div>
 
-<div id="ref-vega-lite">
+<div id="ref-vega-lite" class="csl-entry">
 
 Satyanarayan, Arvind, Dominik Moritz, Kanit Wongsuphasawat, and Jeffrey
 Heer. 2017. “Vega-Lite: A Grammar of Interactive Graphics.” *IEEE
@@ -320,7 +310,14 @@ Transactions on Visualization and Computer Graphics* 23 (1): 341–50.
 
 </div>
 
-<div id="ref-altair">
+<div id="ref-Python" class="csl-entry">
+
+Van Rossum, Guido, and Fred L. Drake. 2009. *Python 3 Reference Manual*.
+Scotts Valley, CA: CreateSpace.
+
+</div>
+
+<div id="ref-altair" class="csl-entry">
 
 VanderPlas, Jacob, Brian Granger, Jeffrey Heer, Dominik Moritz, Kanit
 Wongsuphasawat, Arvind Satyanarayan, Eitan Lees, Ilia Timofeev, Ben
@@ -330,30 +327,24 @@ Visualizations for Python.” *Journal of Open Source Software* 3 (32):
 
 </div>
 
-<div id="ref-Python">
-
-Van Rossum, Guido, and Fred L. Drake. 2009. *Python 3 Reference Manual*.
-Scotts Valley, CA: CreateSpace.
-
-</div>
-
-<div id="ref-SciPy">
+<div id="ref-SciPy" class="csl-entry">
 
 Virtanen, Pauli, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler
-Reddy, David Cournapeau, Evgeni Burovski, et al. 2020. “SciPy 1.0:
-Fundamental Algorithms for Scientific Computing in Python.” *Nature
-Methods* 17: 261–72. <https://doi.org/10.1038/s41592-019-0686-2>.
+Reddy, David Cournapeau, Evgeni Burovski, et al. 2020. “<span
+class="nocase">SciPy 1.0: Fundamental Algorithms for Scientific
+Computing in Python</span>.” *Nature Methods* 17: 261–72.
+<https://doi.org/10.1038/s41592-019-0686-2>.
 
 </div>
 
-<div id="ref-tidyverse">
+<div id="ref-tidyverse" class="csl-entry">
 
 Wickham, Hadley. 2017. *Tidyverse: Easily Install and Load the
-’Tidyverse’*. <https://CRAN.R-project.org/package=tidyverse>.
+’tidyverse’*. <https://CRAN.R-project.org/package=tidyverse>.
 
 </div>
 
-<div id="ref-knitr">
+<div id="ref-knitr" class="csl-entry">
 
 Xie, Yihui. 2014. “Knitr: A Comprehensive Tool for Reproducible Research
 in R.” In *Implementing Reproducible Computational Research*, edited by
@@ -362,9 +353,9 @@ Hall/CRC. <http://www.crcpress.com/product/isbn/9781466561595>.
 
 </div>
 
-<div id="ref-kableExtra">
+<div id="ref-kableExtra" class="csl-entry">
 
-Zhu, Hao. 2020. *KableExtra: Construct Complex Table with ’Kable’ and
+Zhu, Hao. 2020. *kableExtra: Construct Complex Table with ’kable’ and
 Pipe Syntax*. <https://CRAN.R-project.org/package=kableExtra>.
 
 </div>

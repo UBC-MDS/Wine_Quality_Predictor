@@ -79,7 +79,7 @@ def main(in_file_1, in_file_2, out_dir):
     best_model_pipe.fit(X_train, y_train)
     best_model_pipe.score(X_test, y_test)
 
-    plot_confusion_matrix(best_model_pipe, X_test, y_test, values_format = 'd', cmap = plt.cm.Blues)
+    plot_confusion_matrix(best_model_pipe, X_test, y_test, cmap = plt.cm.Blues, normalize='true')
     predictions_m = best_model_pipe.predict(X_test)
     cm = confusion_matrix(y_test, predictions_m)
     path_f = out_dir + "final_model_quality.png"

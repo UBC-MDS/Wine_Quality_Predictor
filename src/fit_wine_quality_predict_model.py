@@ -139,9 +139,13 @@ def main(in_file_1, out_dir):
     random_search.fit(X_train, y_train)
     best_model_pipe = random_search.best_estimator_
     
-    joblib_file = out_dir + "best_Model.pkl"  
-    joblib.dump(best_model_pipe, joblib_file)
-    
+    try:
+        joblib_file = out_dir + "best_Model.pkl"  
+        joblib.dump(best_model_pipe, joblib_file)
+    except:
+        os.makedirs(os.path.dirname(out_dir))
+        joblib_file = out_dir + "best_Model.pkl"  
+        joblib.dump(best_model_pipe, joblib_file)
 
 if __name__ == "__main__":
   main(opt["--in_file_1"], opt["--out_dir"])
