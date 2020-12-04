@@ -31,32 +31,16 @@ To replicate the analysis, clone this GitHub repository, install the
 commands at the command line/terminal from the root directory of this
 project: 
 
-```
-# download wine data set to directory
-python src/download_data.py --url="https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv" --out_file="data/raw/winequality-red.csv"
-python src/download_data.py --url="https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-white.csv" --out_file="data/raw/winequality-white.csv"
+```bash
+make all
 
+````
+To reset the repo to a clean state, with no intermediate or results files, run the following command at the command line/terminal from the root directory of this project:
 
-# pre-process data and split data to training set and test set
-python src/pre_processing_wine.py --in_file_1="data/raw/winequality-red.csv" --in_file_2="data/raw/winequality-white.csv" --out_dir="data/processed/"
-
-
-# create exploratory data analysis figure and write to file
-python eda/wine_eda.py -i data/processed/processed.csv -o eda/wine_EDA_files/
-
-
-# fitting model
-python src/fit_wine_quality_predict_model.py --in_file_1="data/processed/processed_train.csv" --out_dir="results/"
-
-# test model
-python src/wine_quality_test_results.py --in_file_1="data/processed/processed_train.csv" --in_file_2="data/processed/processed_test.csv" --out_dir="results/"
-
-
-# render final report (RStudio terminal)
-Rscript -e "rmarkdown::render('reports/reports.Rmd', output_format = 'github_document')"
+```bash
+make clean
 
 ```
-
 ## Dependencies
 
 To run this project, please install 
@@ -71,9 +55,9 @@ conda activate wine_env
 ```
 
 * R version 4.0.2. and R packages:
- - knitr==1.30
- - kableExtra==1.3.1
- - tidyverse==1.3.0
+     - knitr==1.30
+     - kableExtra==1.3.1
+     - tidyverse==1.3.0
 
 
 ## License

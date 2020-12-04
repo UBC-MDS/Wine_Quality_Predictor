@@ -1,7 +1,7 @@
 Predicting wine quality using measurements of physiochemical tests
 ================
 Alex Truong, Bruhat Musinuru, Rui Wang and Sang Yoon Lee </br>
-2020-11-26 (updated: 2020-11-29)
+2020-11-26 (updated: 2020-12-04)
 
   - [Summary](#summary)
   - [Introduction](#introduction)
