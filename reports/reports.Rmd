@@ -79,5 +79,6 @@ knitr::include_graphics("../results/final_model_quality.png")
 
 Having said that the research also need further improvement in terms of obtaining a more balanced data set for training and cross-validation. More feature engineer and selection could be conducted to minimize the affect of correlation among the explanatory variable. Furthermore, in order to assess the robustness of the predicting model, we need to test the model with deployment data in real world besides testing with our test data.
 
+In conclusion, we think that with a decent error rate, our predicting model based on neutral network Multi-layer Perception (MLP) model would serve well as an effective first-cut assessment on wine quality. 
 
 # References
