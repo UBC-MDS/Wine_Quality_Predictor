@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import altair as alt
+from selenium import webdriver
 from altair_saver import save
 
 
@@ -120,7 +121,8 @@ def generate_eda_plots(data):
 def save_plots(output_dir, plots_dict):
     for k, v in plots_dict.items():
         try:
-            save(v, output_dir + "/" + k)
+            driver = webdriver.Chrome()
+            save(v, output_dir + "/" + k, method='selenium', webdriver=driver)
             print("Successfully saved {}".format(k))
         except Exception as e:
             print(e)
