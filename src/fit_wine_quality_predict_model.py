@@ -2,7 +2,8 @@
 # date: 2020-11-28
 
 
-"""Model building and fitting the data.
+"""Optimizes hyperprameter for Multi-layer Perception (MLP) model and fits a MLP model with best hyperparameter on the pre-processed training data from UCI Machine Learning Repository.
+Saves the model as a pkl file.
 
 Usage: src/fit_wine_quality_predict_model.py --in_file_1=<in_file_1> --out_dir=<out_dir> 
 
@@ -62,32 +63,6 @@ from sklearn.model_selection import cross_val_predict
 from sklearn.metrics import plot_precision_recall_curve, plot_roc_curve
 
 opt = docopt(__doc__)
-
-def store_cross_val_results(model_name, scores, results_dict):
-    """
-    Stores mean scores from cross_validate in results_dict for
-    the given model model_name.
-    Parameters
-    ----------
-    model_name :
-        scikit-learn classification model
-    scores : dict
-        object return by `cross_validate`
-    results_dict: dict
-        dictionary to store results
-    Returns
-    ----------
-        None
-    """
-    results_dict[model_name] = {
-        "mean_fit_time": "{:0.4f}".format(np.mean(scores["fit_time"])),
-        "mean_score_time": "{:0.4f}".format(np.mean(scores["score_time"])),
-        "mean_test_f1 (s)": "{:0.4f}".format(np.mean(scores["test_f1_micro"])),
-        "mean_train_f1 (s)": "{:0.4f}".format(np.mean(scores["train_f1_micro"])),
-        "mean_test_accuracy (s)": "{:0.4f}".format(np.mean(scores["test_accuracy"])),
-        "mean_train_accuracy (s)": "{:0.4f}".format(np.mean(scores["train_accuracy"])),
-    }
-
 
 def main(in_file_1, out_dir):
     # read data and combine two data set vertically
@@ -149,3 +124,28 @@ def main(in_file_1, out_dir):
 
 if __name__ == "__main__":
   main(opt["--in_file_1"], opt["--out_dir"])
+
+def store_cross_val_results(model_name, scores, results_dict):
+    """
+    Stores mean scores from cross_validate in results_dict for
+    the given model model_name.
+    Parameters
+    ----------
+    model_name :
+        scikit-learn classification model
+    scores : dict
+        object return by `cross_validate`
+    results_dict: dict
+        dictionary to store results
+    Returns
+    ----------
+        None
+    """
+    results_dict[model_name] = {
+        "mean_fit_time": "{:0.4f}".format(np.mean(scores["fit_time"])),
+        "mean_score_time": "{:0.4f}".format(np.mean(scores["score_time"])),
+        "mean_test_f1 (s)": "{:0.4f}".format(np.mean(scores["test_f1_micro"])),
+        "mean_train_f1 (s)": "{:0.4f}".format(np.mean(scores["train_f1_micro"])),
+        "mean_test_accuracy (s)": "{:0.4f}".format(np.mean(scores["test_accuracy"])),
+        "mean_train_accuracy (s)": "{:0.4f}".format(np.mean(scores["train_accuracy"])),
+    }
