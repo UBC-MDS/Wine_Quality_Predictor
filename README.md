@@ -1,46 +1,64 @@
 # Wine Quality Predictor
 
-  - contributors: Bruhat Musunuru , Rui Wang, Alex Truong Hai Yen , Sang Yoon Lee
+Authors: 
+Member | Github
+-------|---------
+Bruhat Musunuru |[bruhatm](https://github.com/BruhatM)
+Alex Truong Hai Yen | [athy9193](https://github.com/athy9193)
+Rui Wang |[wang-rui](https://github.com/wang-rui)
+Sang Yoon Lee |[rissangs](https://github.com/rissangs)
 
-First milestone of a data analysis project for DSCI 522 (Data Science workflows, part of Master of Data Science program at the University of British Columbia.)
+Second milestone of a data analysis project for DSCI 522: Data Science workflows, part of Master of Data Science program at the University of British Columbia.
 
-## Introduction
+## About
 
-In this project we are trying to predict the quality of a given wine sample using its features, composition and characteristics. Traditional methods of categorizing wine are prone to human error and can vary drastically from expert to expert. We propose a data mining approach to predict human wine taste preferences based on complex data analytical algorithms and classification models. This unbiased and human error free metric can provide a standardized metric that can be used for personalized wine recommendation, Quality assessment and comparison unit. It can also be used by wineries as an important metric which could aid in important business decisions and strategies.
+Here we attempt to build a model to predict the quality of a given wine sample using its features, composition and characteristics. Traditional methods of categorizing wine are prone to human error and  time-consuming. We propose a data mining approach to predict human wine taste preferences based on complex data analytical algorithms and classification models. This unbiased and human error free metric can provide a standardized metric that can be used for personalized wine recommendation, quality assessment and comparison unit. It can also be used by wineries as an important metric which could aid in important business decisions and strategies.
 	
-  The data set used in this project is created by Paulo Cortez from the University of Minho in Guimarães, Portugal, and A. Cerdeira, F. Almeida, T. Matos and J. Reis from the Viticulture Commission of the Vinho Verde Region in Porto, Portugal. The two datasets are included are related to red and white vinho verde wine samples, from the north of Portugal. It was sourced from the UCI Machine Learning Repository and can be found here{ADD LINK}. Each row in the data set represents summary statistics from a sample of wine based on physicochemical tests with attributes fixed acidity, volatile acidity, citric acid, residual sugar, pH, etc.  
+The data set used in this project is created by Paulo Cortez from the University of Minho in Guimarães, Portugal, and A. Cerdeira, F. Almeida, T. Matos and J. Reis from the Viticulture Commission of the Vinho Verde Region in Porto, Portugal. The two datasets are included are related to red and white vinho verde wine samples, from the north of Portugal. It was sourced from the UCI Machine Learning Repository and can be found [here](https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/). Each row in the data set represents summary statistics from a sample of wine based on physicochemical tests with attributes fixed acidity, volatile acidity, citric acid, residual sugar, pH, etc.  
 
-  We plan to build a predictive classification model to provide the standardized metric discussed above. In order for the model to abide by the golden rule, we plan to split the data into train and test sets (80% - 20% respectively) and perform exploratory data analysis in order to assess any class imbalance, outliers that needs to be considered when scouting for best model to fit our needs. (ADD WHAT EDA IS INCLUDED IN THE EDA FILE LIKE THE PLOT)
-	
-  The outcome or the Standardized metric we are trying to establish is to classify all wines into three classes (Bad, Good, Excellent). One likely model suitable for this classification is linear regression and set a threshold for each class in the predicted probabilities. Since our data set is reasonably sized with 1598 observations, we can choose a higher cross-validation of ~50 folds. We will use this accuracy to tune our model for the best fit. After doing so, we re-fit the model on the entire training data set, and then evaluate it’s performance on the test data set. This gives a deeper understanding of our model. We will use this information to address classification errors and report them as a table in the final report.
+  We built a classification model using Multi-layer Perceptron classifier to predict the quality class of a given wine. To summarise, our model classifies wine into one of three classses, poor-normal-excellent. We have had good prediction accuracies and f1-score with this model and through our analysis we also found that it generalizes well. For complete report , please check the report section.
 
-For this Milestone we have performed an EDA on the data set which can be found here (ADD LINK)
+
  
+## Report
 
-
+The final report can be found [here](https://github.com/UBC-MDS/Wine_Quality_Predictor/blob/main/reports/reports.md)
 
 ## Usage
 
 To replicate the analysis, clone this GitHub repository, install the
 [dependencies](#dependencies) listed below, and run the following
 commands at the command line/terminal from the root directory of this
-project: {ADD RUN CODE!!!}
+project: 
 
+```bash
+make all
 
+````
+To reset the repo to a clean state, with no intermediate or results files, run the following command at the command line/terminal from the root directory of this project:
+
+```bash
+make clean
+
+```
 ## Dependencies
 
-  - Python 3.7.3 and Python packages:
-      - docopt==0.6.2
-      - requests==2.22.0
-      - pandas==0.24.2
-      - feather-format==0.4.0
-  - R version 3.6.1 and R packages:
-      - knitr==1.26
-      - feather==0.3.5
-      - tidyverse==1.2.1
-      - caret==6.0-84
-      - ggridges==0.5.1
-      - ggthemes==4.2.0
+To run this project, please install 
+
+* Python version 3.8.6 and the required dependencies from [here](https://github.com/UBC-MDS/Wine_Quality_Predictor/blob/main/wine_env.yml) by running the following command at the command line/terminal
+
+
+```bash
+# create a conda environment using the `wine_env.yml`
+conda env create --file wine_env.yml
+conda activate wine_env
+```
+
+* R version 4.0.2. and R packages:
+     - knitr==1.30
+     - kableExtra==1.3.1
+     - tidyverse==1.3.0
+
 
 ## License
 
@@ -73,3 +91,4 @@ Sample Milestone 1 on Breast Cancer for 552 by author: Tiffany Timbers, contribu
 </div>
 
 </div>
+
