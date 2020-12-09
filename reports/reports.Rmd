@@ -47,7 +47,7 @@ In this project we are trying to predict the quality of a given wine sample usin
 We eventually decided to pick neutral network Multi-layer Perception (MLP) model as the model that yield the best results after running the various machine learning models through the train data set, comparing their performance based on f1-score and checking consistency across cross-validation runs. We noticed that random forest recorded high f1-validation score at 0.84, however, it also had a large gap between train and validation with a perfect train score of 1. This caused us to think the model has overfitted. Logistic regression also showed promising f1 validation score results in our case, yet this high results were not consistent across cross-validation splits. Hence, with most models struggled to get to the 0.8 f1-score mark without significantly overfitting on the train set, while MLP shows consistent results across all cross-validation splits, our final choice landed on MLP model because we think it would generalize better.
 
 ```{r, fig.cap = "Table 1: Score results among different machine learning model we have explore"}
-knitr::include_graphics("models_c_revised.png")
+knitr::include_graphics("../results/f1_score_all_classifiers.png")
 ```
 
 The Python and R programming languages [@R; @Python] and the following Python and R packages were used to perform the analysis: scikit-learn [@scikit-learn], docoptpython [@docoptpython], docopt [@docopt], altair [@altair], vega-lite [@vega-lite], IPython-ipykernel [@IPython], matplotlib [@matplotlib], scipy [@SciPy], numpy [@harris2020array], pandas [@pandas], graphviz [@graphviz], pandas-profiling [@pandasprofiling2019], knitr [@knitr], tidyverse [@tidyverse], kableExtra [@kableExtra]. The code used to perform the analysis and re-create this report can be found [here](https://github.com/UBC-MDS/Wine_Quality_Predictor#usage)
@@ -67,7 +67,7 @@ knitr::include_graphics("../eda/wine_EDA_files/wine_quality_rank_per_feature.png
 Since this is a multi-class classification, our goal was to find a model that was consistent and able to recognize patterns from our data. We choose to use a neutral network Multi-layer Perception (MLP) model as it was consistent and showed promising results. If we take a look at the accuracy scores and f1 scores across cross validation splits, we can see that it is pretty consistent which was not the case with many models.
 
 ```{r, echo=FALSE,out.width="50%", out.height="20%",fig.cap="Figure 2: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model",fig.show='hold',fig.align='center'}
-knitr::include_graphics(c("f1_revised.png","accuracy_plot_revised.png"))
+knitr::include_graphics(c("../results/f1_score_random_forest.png","../results/f1_score_mlp.png"))
 ``` 
 
 

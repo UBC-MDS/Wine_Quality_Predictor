@@ -8,6 +8,7 @@ import altair as alt
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from altair_saver import save
+import os
 
 
 alt.renderers.enable('mimetype');
@@ -23,11 +24,14 @@ alt.data_transformers.disable_max_rows();
 # There are two datasets for red and white wine samples. For each wine sample observation , the inputs contains measurements of various objective physicochemical tests, and the output is the median wine quality ratings given by experts on the scale from 0 (very bad) and 10 (very excellent).The author notes that data on grape types, wine brand, wind selling price among other are not available due to privacy and logistics issues. There are 1599 observations for red wine and 4898 observations of white wine.
 
 
+def main(input_path, output_dir):
+    data = read_input_data(input_path)
+    plots_dict = generate_eda_plots(data)
+    save_plots(output_dir, plots_dict)
 
 def read_input_data(input_path):
     data = pd.read_csv(input_path)
     return data 
-
 
 def generate_eda_plots(data):
     plots_dict = {}
@@ -121,18 +125,16 @@ def generate_eda_plots(data):
 
 def save_plots(output_dir, plots_dict):
     for k, v in plots_dict.items():
+        if os.path.exists(output_dir):
+            pass
+        else:
+            os.makedirs(os.path.dirname(output_dir))
         try:
             driver = webdriver.Chrome(ChromeDriverManager().install())
-            save(v, output_dir + "/" + k, method='selenium', webdriver=driver)
+            save(v, output_dir + k, method='selenium', webdriver=driver)
             print("Successfully saved {}".format(k))
         except Exception as e:
             print(e)
-
-def main(input_path, output_dir):
-    data = read_input_data(input_path)
-    plots_dict = generate_eda_plots(data)
-    save_plots(output_dir, plots_dict)
-
 
 def usage():
     print ("""
