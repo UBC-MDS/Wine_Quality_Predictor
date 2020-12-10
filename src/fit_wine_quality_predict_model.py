@@ -25,23 +25,18 @@ import numpy as np
 import pandas as pd
 import altair as alt
 
-# data
+# Sklearn dependencies
 from sklearn import datasets
 from sklearn.compose import ColumnTransformer, make_column_transformer
-from sklearn.dummy import DummyClassifier, DummyRegressor
-from sklearn.ensemble import (RandomForestClassifier, RandomForestRegressor, VotingClassifier, StackingClassifier)
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_extraction.text import CountVectorizer
-
-# Feature selection
-from sklearn.feature_selection import RFE, RFECV
 from sklearn.impute import SimpleImputer
-
-# classifiers / models
 from sklearn.linear_model import RidgeClassifier
-from sklearn.linear_model import LogisticRegression
-
-# other
-from sklearn.metrics import accuracy_score, log_loss, make_scorer, mean_squared_error, plot_confusion_matrix
+from sklearn.metrics import (accuracy_score, 
+    log_loss, make_scorer, 
+    mean_squared_error, 
+    plot_confusion_matrix
+)
 from sklearn.model_selection import (
     GridSearchCV,
     RandomizedSearchCV,
@@ -63,8 +58,6 @@ from sklearn.neighbors import NearestCentroid
 from sklearn.discriminant_analysis import QuadraticDiscriminantAnalysis
 from sklearn.model_selection import cross_val_predict
 from sklearn.metrics import plot_precision_recall_curve, plot_roc_curve
-from sklearn.svm import SVC
-from catboost import CatBoostClassifier
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from altair_saver import save
@@ -97,27 +90,6 @@ def main(in_file_1, out_dir):
     # Model selection
     results={}
     scoring_metric = {'f1_micro'}
-
-    pipe_rf = make_pipeline(preprocessor, RandomForestClassifier(bootstrap=False, max_depth=20,
-                                        max_features='sqrt', n_estimators=1800,
-                                        random_state=123))
-    pipe_catboost = make_pipeline(preprocessor, CatBoostClassifier(verbose=0, random_state=123))
-    pipe_svc = make_pipeline(preprocessor, SVC(probability=True))
-    classifiers = {
-        "svm": pipe_svc,
-        'random forest' : pipe_rf,
-        'CatBoost' : pipe_catboost,
-    }
-
-    stacking_model = StackingClassifier(list(classifiers.items()), 
-                     final_estimator=RandomForestClassifier())
-    results['StackingClf'] = mean_std_cross_val_scores(stacking_model, 
-                                                        X_train, 
-                                                        y_train, 
-                                                        return_train_score=True, 
-                                                        scoring=scoring_metric)
-    
-    # Model selection plot
     classifiers_plot = {
         "RidgeClassifier": RidgeClassifier(random_state=123),
         "Random Forest":RandomForestClassifier(bootstrap=False, max_depth=20,
