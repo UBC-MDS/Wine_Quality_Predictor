@@ -20,23 +20,32 @@ from collections import deque
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from altair_saver import save
-import joblib
 
-# sklearn
+# data
 from sklearn import datasets
 from sklearn.compose import ColumnTransformer, make_column_transformer
+from sklearn.dummy import DummyClassifier, DummyRegressor
+from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.impute import SimpleImputer
-from sklearn.metrics import (
-    accuracy_score, 
-    log_loss, 
-    make_scorer, 
-    mean_squared_error, 
-    confusion_matrix, 
-    plot_confusion_matrix, 
-    f1_score)
 
+# Feature selection
+from sklearn.feature_selection import RFE, RFECV
+from sklearn.impute import SimpleImputer
+
+# classifiers / models
+from sklearn.linear_model import RidgeClassifier
+from sklearn.linear_model import LogisticRegression
+
+# other
+from sklearn.metrics import accuracy_score, log_loss, make_scorer, mean_squared_error, confusion_matrix
+from sklearn.model_selection import (
+    GridSearchCV,
+    RandomizedSearchCV,
+    ShuffleSplit,
+    cross_val_score,
+    cross_validate,
+    train_test_split,
+)
 from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.preprocessing import (
     OneHotEncoder,
@@ -45,6 +54,10 @@ from sklearn.preprocessing import (
     StandardScaler,
 )
 from sklearn.neural_network import MLPClassifier
+import joblib
+from sklearn.metrics import (plot_confusion_matrix)
+
+
 
 opt = docopt(__doc__)
 
@@ -58,26 +71,20 @@ def main(in_file_1, in_file_2, out_dir):
     X_test = test_df.drop(columns = ['quality','quality_rank'], axis=1)
     y_test = test_df['quality_rank']
 
+
     #---------------------------------------------------------------------------------------------------------
     # Testing out model
+
     best_model_pipe = joblib.load("results/best_Model.pkl")
     best_model_pipe.fit(X_train, y_train)
     best_model_pipe.score(X_test, y_test)
-    
-    # Ploting confusion matrix
+
     plot_confusion_matrix(best_model_pipe, X_test, y_test, cmap = plt.cm.Blues, normalize='true')
     predictions_m = best_model_pipe.predict(X_test)
     cm = confusion_matrix(y_test, predictions_m)
     path_f = out_dir + "final_model_quality.png"
-
-    try:
-        plt.savefig(path_f)
-    except:
-        os.makedirs(os.path.dirname(out_dir))
-        plt.savefig(path_f)
+    plt.savefig(path_f)
     
-    score_f1 = f1_score(y_test, predictions_m, average='micro')
-    print(f"The test score (f1_micro) is: {round(score_f1,5)}")
 
 if __name__ == "__main__":
   main(opt["--in_file_1"], opt["--in_file_2"], opt["--out_dir"])
