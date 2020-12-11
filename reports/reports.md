@@ -1,7 +1,7 @@
 Predicting wine quality using measurements of physiochemical tests
 ================
 Alex Truong, Bruhat Musinuru, Rui Wang and Sang Yoon Lee </br>
-2020-11-26 (updated: 2020-12-09)
+2020-11-26 (updated: 2020-12-04)
 
 -   [Summary](#summary)
 -   [Introduction](#introduction)
@@ -111,7 +111,7 @@ because we think it would generalize better.
 
 <div class="figure">
 
-<img src="../results/f1_score_all_classifiers.png" alt="Table 1: Score results among different machine learning model we have explore" width="509" />
+<img src="models_c_revised.png" alt="Table 1: Score results among different machine learning model we have explore" width="1207" />
 <p class="caption">
 Table 1: Score results among different machine learning model we have
 explore
@@ -145,7 +145,7 @@ wine.
 
 <div class="figure">
 
-<img src="../eda/wine_EDA_files/wine_quality_rank_per_feature.png" alt="Figure 1: Distribution plot between wine quality and various attributes from physicochemical test" width="936" />
+<img src="../eda/wine_EDA_files/wine_quality_rank_per_feature.png" alt="Figure 1: Distribution plot between wine quality and various attributes from physicochemical test" width="937" />
 <p class="caption">
 Figure 1: Distribution plot between wine quality and various attributes
 from physicochemical test
@@ -162,7 +162,7 @@ that it is pretty consistent which was not the case with many models.
 
 <div class="figure" style="text-align: center">
 
-<img src="../results/f1_score_random_forest.png" alt="Figure 2: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model" width="50%" height="20%" /><img src="../results/f1_score_mlp.png" alt="Figure 2: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model" width="50%" height="20%" />
+<img src="f1_revised.png" alt="Figure 2: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model" width="50%" height="20%" /><img src="accuracy_plot_revised.png" alt="Figure 2: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model" width="50%" height="20%" />
 <p class="caption">
 Figure 2: Accuracy scores and f1 scores across cross validation splits
 for neutral network Multi-layer Perception (MLP) model
@@ -193,10 +193,6 @@ affect of correlation among the explanatory variable. Furthermore, in
 order to assess the robustness of the predicting model, we need to test
 the model with deployment data in real world besides testing with our
 test data.
-
-In conclusion, we think that with a decent error rate, our predicting
-model based on neutral network Multi-layer Perception (MLP) model would
-serve well as an effective first-cut assessment on wine quality.
 
 # References
 
@@ -344,7 +340,7 @@ Computing in Python</span>.” *Nature Methods* 17: 261–72.
 <div id="ref-tidyverse" class="csl-entry">
 
 Wickham, Hadley. 2017. *Tidyverse: Easily Install and Load the
-’Tidyverse’*. <https://CRAN.R-project.org/package=tidyverse>.
+’tidyverse’*. <https://CRAN.R-project.org/package=tidyverse>.
 
 </div>
 
@@ -359,7 +355,7 @@ Hall/CRC. <http://www.crcpress.com/product/isbn/9781466561595>.
 
 <div id="ref-kableExtra" class="csl-entry">
 
-Zhu, Hao. 2020. *kableExtra: Construct Complex Table with ’Kable’ and
+Zhu, Hao. 2020. *kableExtra: Construct Complex Table with ’kable’ and
 Pipe Syntax*. <https://CRAN.R-project.org/package=kableExtra>.
 
 </div>
