@@ -22,7 +22,10 @@ alt.data_transformers.disable_max_rows();
 # 
 # There are two datasets for red and white wine samples. For each wine sample observation , the inputs contains measurements of various objective physicochemical tests, and the output is the median wine quality ratings given by experts on the scale from 0 (very bad) and 10 (very excellent).The author notes that data on grape types, wine brand, wind selling price among other are not available due to privacy and logistics issues. There are 1599 observations for red wine and 4898 observations of white wine.
 
-
+def main(input_path, output_dir):
+    data = read_input_data(input_path)
+    plots_dict = generate_eda_plots(data)
+    save_plots(output_dir, plots_dict)
 
 def read_input_data(input_path):
     data = pd.read_csv(input_path)
@@ -37,7 +40,7 @@ def generate_eda_plots(data):
         alt.Y('count():Q'),
         alt.Tooltip('count():Q')
     ).properties(height = 100)
-    plots_dict['distribution_of_wine_quality.png'] = distribution_plots
+    plots_dict['distribution_of_wine_quality.svg'] = distribution_plots
 
     distribution_plots_regrouped = alt.Chart(data, title = "Distribution of wine quality (regrouped)").mark_bar().encode(
         alt.X('quality_rank:O', title = 'Wine quality rank', sort = ['poor','normal','excellent']),
@@ -51,7 +54,7 @@ def generate_eda_plots(data):
         alt.Color('type', legend = None),
         alt.Tooltip('count()')
     )
-    plots_dict['distribution_of_type_of_wine.png'] = distribution_of_type_of_wine
+    plots_dict['distribution_of_type_of_wine.svg'] = distribution_of_type_of_wine
 
     numeric_cols = data.select_dtypes('number').columns.tolist()[:-1]
 
@@ -62,7 +65,7 @@ def generate_eda_plots(data):
     ).properties(width = 200, height = 100
     ).repeat(repeat = numeric_cols, columns = 3)
 
-    plots_dict['distribution_of_numeric_features.png'] = distribution_of_numeric_features
+    plots_dict['distribution_of_numeric_features.svg'] = distribution_of_numeric_features
 
     corr_df = data.select_dtypes('number').corr("spearman").stack().reset_index(name='corr')
 
@@ -71,7 +74,7 @@ def generate_eda_plots(data):
         y=alt.Y('level_1', title=''),
         size='corr',
         color='corr')
-    plots_dict['correlation_matrix.png'] = correlation_matrix
+    plots_dict['correlation_matrix.svg'] = correlation_matrix
 
 
     density_rels = ['chlorides', 'residual sugar', 'volatile acidity', 'fixed acidity', 'alcohol']
@@ -83,7 +86,7 @@ def generate_eda_plots(data):
     ).properties(width = 110, height = 110
     ).repeat(column = density_rels, row = ['density']
     ).configure_axis(labels=False)
-    plots_dict['density_facet.png'] = density_facet
+    plots_dict['density_facet.svg'] = density_facet
 
     sugar_rels = ['total sulfur dioxide','free sulfur dioxide']
     sugar_facet = alt.Chart(data).mark_point(size =2, opacity = 0.2).encode(
@@ -92,7 +95,7 @@ def generate_eda_plots(data):
         alt.Color('type')
     ).properties(width = 250, height = 250
     ).repeat(column = sugar_rels, row = ['residual sugar'])
-    plots_dict['sugar_facet.png'] = sugar_facet
+    plots_dict['sugar_facet.svg'] = sugar_facet
 
 
 
@@ -106,7 +109,7 @@ def generate_eda_plots(data):
         y='type',
         color='quality_rank'
     )
-    plots_dict['wine_quality_rank.png'] = wine_quality_rank
+    plots_dict['wine_quality_rank.svg'] = wine_quality_rank
 
 
     wine_quality_rank_per_feature = alt.Chart(data).mark_boxplot().encode(
@@ -115,7 +118,7 @@ def generate_eda_plots(data):
         alt.Color('quality_rank')
     ).properties(width = 200, height = 100
     ).repeat(repeat = numeric_cols, columns = 3)
-    plots_dict['wine_quality_rank_per_feature.png'] = wine_quality_rank_per_feature
+    plots_dict['wine_quality_rank_per_feature.svg'] = wine_quality_rank_per_feature
     return plots_dict
 
 
@@ -128,16 +131,11 @@ def save_plots(output_dir, plots_dict):
         except Exception as e:
             print(e)
 
-def main(input_path, output_dir):
-    data = read_input_data(input_path)
-    plots_dict = generate_eda_plots(data)
-    save_plots(output_dir, plots_dict)
-
 
 def usage():
     print ("""
     Usage: python %s [-h|-i|-o] [--help|--input|--output]
-    If you couldn't export the png files, please make sure you properly installed node js packaged below:
+    If you couldn't export the svg files, please make sure you properly installed node js packaged below:
     npm install -g --force vega-lite vega-cli canvas
     conda install -c conda-forge vega-cli vega-lite-cli 
     Options:
