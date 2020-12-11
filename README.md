@@ -60,6 +60,14 @@ conda activate wine_env
      - tidyverse==1.3.0
 
 
+## Dependency Diagram
+
+The diagram below shows the structure of how the project and this repo is structured to produce the final results.
+
+![](Makefile.png)
+
+
+
 ## License
 
 The Wine Quality Predictor materials here are licensed under the
