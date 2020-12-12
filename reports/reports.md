@@ -1,7 +1,7 @@
 Predicting wine quality using measurements of physiochemical tests
 ================
 Alex Truong, Bruhat Musinuru, Rui Wang and Sang Yoon Lee </br>
-2020-11-26 (updated: 2020-12-12)
+2020-11-26 (updated: 2020-12-13)
 
   - [Summary](#summary)
   - [Introduction](#introduction)
@@ -26,14 +26,15 @@ based on the test set predictions.
 
 However, it incorrectly classifies 13.7% of the data in the lower end of
 spectrum (between normal and poor). This could be due to class imbalance
-present in the data set where normal samples outnumber poor by roughly
-twenty times. Improving the data collection methods to reduce the data
-class imbalance and using an appropriate assessment metric for
-imbalanced data can help to improve our analysis. On the other hand,
-given the rate of miss-classification is not so high and the impact can
-be corrected in further assessment, we believe this model could decently
-serve its purpose as a wine predictor to conduct first-cut assessment,
-which could help speed up the wine ratings process.
+present in the data set where normal samples outnumber poor ones (as
+demonstrated in the charts below). Improving the data collection methods
+to reduce the data class imbalance and using an appropriate assessment
+metric for imbalanced data can help to improve our analysis. On the
+other hand, given the rate of miss-classification is not so high and the
+impact can be corrected in further assessment, we believe this model
+could decently serve its purpose as a wine predictor to conduct
+first-cut assessment, which could help speed up the wine ratings
+process.
 
 ## Introduction
 
@@ -83,6 +84,18 @@ Figure 1: Distribution of type of wine
 
 </div>
 
+<div class="figure" style="text-align: center">
+
+<img src="../eda/wine_EDA_files/wine_quality_rank.svg" alt="Figure 2: Class imbalance in wine quality rank" width="50%" />
+
+<p class="caption">
+
+Figure 2: Class imbalance in wine quality rank
+
+</p>
+
+</div>
+
 ### Analysis
 
 At the preprocessing stage, we decided to combine the red and white data
@@ -98,11 +111,11 @@ set.{Bruhat: to add more justification for f-1 micro score}
 
 <div class="figure" style="text-align: center">
 
-<img src="wine_classification.png" alt="Figure 2: Regrouping of wine quality classification" width="50%" />
+<img src="wine_classification.png" alt="Figure 3: Regrouping of wine quality classification" width="50%" />
 
 <p class="caption">
 
-Figure 2: Regrouping of wine quality classification
+Figure 3: Regrouping of wine quality classification
 
 </p>
 
@@ -136,11 +149,11 @@ because we think it would generalize better.
 
 <div class="figure" style="text-align: center">
 
-<img src="../results/f1_score_all_classifiers.svg" alt="Figure 3: Score results among different machine learning model we have explore"  />
+<img src="../results/f1_score_all_classifiers.svg" alt="Figure 4: Score results among different machine learning model we have explore"  />
 
 <p class="caption">
 
-Figure 3: Score results among different machine learning model we have
+Figure 4: Score results among different machine learning model we have
 explore
 
 </p>
@@ -172,11 +185,11 @@ distinguishable among different quality wine.
 
 <div class="figure" style="text-align: center">
 
-<img src="../eda/wine_EDA_files/wine_quality_rank_per_feature.svg" alt="Figure 4: Distribution plot between wine quality and various attributes from physicochemical test"  />
+<img src="../eda/wine_EDA_files/wine_quality_rank_per_feature.svg" alt="Figure 5: Distribution plot between wine quality and various attributes from physicochemical test"  />
 
 <p class="caption">
 
-Figure 4: Distribution plot between wine quality and various attributes
+Figure 5: Distribution plot between wine quality and various attributes
 from physicochemical test
 
 </p>
@@ -184,16 +197,21 @@ from physicochemical test
 </div>
 
 Since this is a multi-class classification, our goal was to find a model
-that was consistent and able to recognize patterns from our data. After looking at the results, MLP and random forests seem to be the best models for our data. But after analysing the models, We concluded that Random forests is picking up noise in the data as the train error is comparatively drastically lower than the validation error. This is a sign of over fitting which does not seem to affect MLP. Furthermore, the cross-validation scores are more consistent and normally distributed compared to Random forests which further cements that MLP is the best pick.
+that was consistent and able to recognize patterns from our data. We
+choose to use a neutral network Multi-layer Perception (MLP) model as it
+was consistent and showed promising results. If we take a look at the
+accuracy scores and f1 scores across cross validation splits, we can see
+that it is pretty consistent which was not the case with many models.
 
 <div class="figure" style="text-align: center">
 
-<img src="../results/f1_score_random_forest.svg" alt="Figure 5: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model" width="50%" height="20%" /><img src="../results/f1_score_mlp.svg" alt="Figure 5: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model" width="50%" height="20%" />
+<img src="../results/f1_score_random_forest.svg" alt="Figure 6:  f1 micro scores across cross validation splits for RandomForest model (left) and neutral network Multi-layer Perception (MLP) model (right)" width="50%" height="20%" /><img src="../results/f1_score_mlp.svg" alt="Figure 6:  f1 micro scores across cross validation splits for RandomForest model (left) and neutral network Multi-layer Perception (MLP) model (right)" width="50%" height="20%" />
 
 <p class="caption">
 
-Figure 5: f1 micro scores across cross validation splits
-for Random forests and neutral network Multi-layer Perception (MLP) model
+Figure 6: f1 micro scores across cross validation splits for
+RandomForest model (left) and neutral network Multi-layer Perception
+(MLP) model (right)
 
 </p>
 
@@ -204,15 +222,16 @@ look at the confusion matrix below. As we discussed earlier, the
 prediction at the lower end of wine quality spectrum is acceptable. As
 we can see from the confusion matrix below, \~13% error rate for the
 lower end of spectrum and also very acceptable false classifications in
-the high end of spectrum.
+the high end of spectrum. The final test f1\_micro score for our model
+is relatively decent at 0.83538.
 
 <div class="figure" style="text-align: center">
 
-<img src="../results/final_model_quality.png" alt="Figure 6: Confusion Matrix" width="640" />
+<img src="../results/final_model_quality.png" alt="Figure 7: Confusion Matrix" width="640" />
 
 <p class="caption">
 
-Figure 6: Confusion Matrix
+Figure 7: Confusion Matrix
 
 </p>
 
