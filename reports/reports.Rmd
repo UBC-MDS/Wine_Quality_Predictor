@@ -22,7 +22,7 @@ library(tidyverse)
 For this analysis, we used the neutral network Multi-layer Perception (MLP) model in order to try to predict wine quality based on the different wine attributes obtained from physicochemical tests such as alcohol, sulfur dioxide, fixed acidity, residual sugar. When we test it with the different validation data sets, the model yield robust results with 80% accuracy and 80% f1- score (a weighted average metric between precision and recall rate). We also have comparably high score at 80% accuracy and f1-score when we run the model on our test set. Based on these results, we opine that that the model seems to generalize well based on the test set predictions. 
 
 
-However, it incorrectly classifies 13.7% of the data in the lower end of spectrum (between normal and poor). This could be due to class imbalance present in the data set where normal samples outnumber poor ones (as demonstrated in the charts below). Improving the data collection methods to reduce the data class imbalance and using an appropriate assessment metric for imbalanced data can help to improve our analysis. On the other hand, given the rate of miss-classification is not so high and the impact can be corrected in further assessment, we believe this model could decently serve its purpose as a wine predictor to conduct first-cut assessment, which could help speed up the wine ratings process.
+However, it incorrectly classifies 13.7% of the data in the lower end of spectrum (between normal and poor). This could be due to class imbalance present in the data set where normal samples outnumber poor ones (as demonstrated in Figure 2 below). Improving the data collection methods to reduce the data class imbalance and using an appropriate assessment metric for imbalanced data can help to improve our analysis. On the other hand, given the rate of miss-classification is not so high and the impact can be corrected in further assessment, we believe this model could decently serve its purpose as a wine predictor to conduct first-cut assessment, which could help speed up the wine ratings process.
 
 
 
@@ -38,7 +38,7 @@ Moreover, we believe wineries or wine rating institutes could find the model as 
 
 The data set used in this project is the results of a chemical analysis of the Portuguese "Vinho Verde" wine, conducted by Paulo Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis [@cortez2009modeling]. It was sourced from the UCI Machine Learning Repository [@Dua:2019] which can be found [here](https://archive.ics.uci.edu/ml/datasets/wine+quality).
 
-There are two datasets for red and white wine samples. For each wine sample observation , the inputs contains measurements of various objective physicochemical tests, and the output is the median wine quality ratings given by experts on the scale from 0 (very bad) and 10 (very excellent).The author notes that data on grape types, wine brand, wind selling price among other are not available due to privacy and logistics issues. There are 1599 observations for red wine and 4898 observations of white wine.
+There are two datasets for red and white wine samples. For each wine sample observation , the inputs contains measurements of various objective physicochemical tests, and the output is the median wine quality ratings given by experts on the scale from 0 (very bad) and 10 (very excellent).The author notes that data on grape types, wine brand, wind selling price among other are not available due to privacy and logistics issues. There are 1599 observations for red wine and 4898 observations of white wine (as demonstrated in Figure 1).
 
 ```{r, fig.cap = "Figure 1: Distribution of type of wine", out.width= "50%", fig.align='center'}
 
@@ -55,7 +55,7 @@ knitr::include_graphics("../eda/wine_EDA_files/wine_quality_rank.svg")
 
 ### Analysis
 
-At the preprocessing stage, we decided to combine the red and white data set as well as group the data in bigger classification, namely "poor", "normal" and "excellent" for scale "1-4", "5-6" and "7-9" so as to have bigger sample size (as per Figure 2). We acknowledge that the data is imbalanced, hence instead of only using accuracy based to judge the model performance, we also include f1-score and use it as our main assessment metric. f-1 score is metric that combine both the precision and recall metrics, which focus on the false negative and false positive rate of the data and would be appropriate to use with an imbalanced data set.{Bruhat: to add more justification for f-1 micro score}
+At the preprocessing stage, we decided to combine the red and white data set as well as group the data in bigger classification, namely "poor", "normal" and "excellent" for scale "1-4", "5-6" and "7-9" so as to have bigger sample size (as per Figure 3). We acknowledge that the data is imbalanced, hence instead of only using accuracy based to judge the model performance, we also include f1-score and use it as our main assessment metric. f-1 score is metric that combine both the precision and recall metrics, which focus on the false negative and false positive rate of the data and would be appropriate to use with an imbalanced data set.{Bruhat: to add more justification for f-1 micro score}
 
 ```{r, fig.cap = "Figure 3: Regrouping of wine quality classification", out.width= "50%", fig.align='center'}
 

@@ -27,7 +27,7 @@ based on the test set predictions.
 However, it incorrectly classifies 13.7% of the data in the lower end of
 spectrum (between normal and poor). This could be due to class imbalance
 present in the data set where normal samples outnumber poor ones (as
-demonstrated in the charts below). Improving the data collection methods
+demonstrated in Figure 2 below). Improving the data collection methods
 to reduce the data class imbalance and using an appropriate assessment
 metric for imbalanced data can help to improve our analysis. On the
 other hand, given the rate of miss-classification is not so high and the
@@ -70,7 +70,7 @@ quality ratings given by experts on the scale from 0 (very bad) and 10
 (very excellent).The author notes that data on grape types, wine brand,
 wind selling price among other are not available due to privacy and
 logistics issues. There are 1599 observations for red wine and 4898
-observations of white wine.
+observations of white wine (as demonstrated in Figure 1).
 
 <div class="figure" style="text-align: center">
 
@@ -101,7 +101,7 @@ Figure 2: Class imbalance in wine quality rank
 At the preprocessing stage, we decided to combine the red and white data
 set as well as group the data in bigger classification, namely “poor”,
 “normal” and “excellent” for scale “1-4”, “5-6” and “7-9” so as to
-have bigger sample size (as per Figure 2). We acknowledge that the data
+have bigger sample size (as per Figure 3). We acknowledge that the data
 is imbalanced, hence instead of only using accuracy based to judge the
 model performance, we also include f1-score and use it as our main
 assessment metric. f-1 score is metric that combine both the precision
