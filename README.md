@@ -30,16 +30,17 @@ There are two suggested ways to run this analysis:
 
 
 #### 1\. Using Docker
-To run this analysis using Docker, clone/download this repository, use the command line to navigate to the root of this project on your computer, and then type the following (filling in PATH_ON_YOUR_COMPUTER with the absolute path to the root of this project on your computer).
+To run this analysis using Docker, clone/download this repository, use the command line to navigate to the root of this project on your computer, and then type the following at the command line/terminal from the root directory of this project.
+
 
 
 ```bash
-docker run --rm -v PATH_ON_YOUR_COMPUTER:/home/data_analysis_eg ttimbers/data_analysis_pipeline_eg make -C '/home/data_analysis_eg' all
+docker run --rm -v /$(pwd):/home/Wine_Quality_Predictor rwang778/wine-quality-predictor-dockerfile:latest make -C /home/Wine_Quality_Predictor all
 ```
 To clean up the analysis type:
 
 ```bash
-docker run --rm -v PATH_ON_YOUR_COMPUTER:/home/data_analysis_eg ttimbers/data_analysis_pipeline_eg make -C '/home/data_analysis_eg' clean
+docker run --rm -v /$(pwd):/home/Wine_Quality_Predictor rwang778/wine-quality-predictor-dockerfile:latest make -C /home/Wine_Quality_Predictor clean
 ```
 #### 2\. Using Makefile
 To replicate the analysis, clone this GitHub repository, install the
