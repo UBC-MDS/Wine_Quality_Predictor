@@ -49,8 +49,8 @@ RUN pip3 install jinja2
 RUN pip3 install pip>=20
 RUN pip3 install pandas-profiling>=1.4.3
 RUN pip3 install psutil>=5.7.2
-RUN pip3 install xgboost>=1.*
-RUN pip3 install lightgbm>=3.*
+RUN pip3 install xgboost
+RUN pip3 install lightgbm
 RUN pip3 install git+git://github.com/mgelbart/plot-classifier.git
 RUN pip3 install altair-saver==0.5.0
 RUN pip3 install docopt==0.6.2

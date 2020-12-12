@@ -22,7 +22,9 @@ library(tidyverse)
 For this analysis, we used the neutral network Multi-layer Perception (MLP) model in order to try to predict wine quality based on the different wine attributes obtained from physicochemical tests such as alcohol, sulfur dioxide, fixed acidity, residual sugar. When we test it with the different validation data sets, the model yield robust results with 80% accuracy and 80% f1- score (a weighted average metric between precision and recall rate). We also have comparably high score at 80% accuracy and f1-score when we run the model on our test set. Based on these results, we opine that that the model seems to generalize well based on the test set predictions. 
 
 
-However, it incorrectly classifies 13.7% of the data in the lower end of spectrum (between normal and poor). This could be due to class imbalance present in the data set where normal samples outnumber poor by roughly twenty times. Improving the data collection methods to reduce the data class imbalance and using an appropriate assessment metric for imbalanced data can help to improve our analysis. On the other hand, given the rate of miss-classification is not so high and the impact can be corrected in further assessment, we believe this model could decently serve its purpose as a wine predictor to conduct first-cut assessment, which could help speed up the wine ratings process.
+However, it incorrectly classifies 13.7% of the data in the lower end of spectrum (between normal and poor). This could be due to class imbalance present in the data set where normal samples outnumber poor ones (as demonstrated in Figure 2 below). Improving the data collection methods to reduce the data class imbalance and using an appropriate assessment metric for imbalanced data can help to improve our analysis. On the other hand, given the rate of miss-classification is not so high and the impact can be corrected in further assessment, we believe this model could decently serve its purpose as a wine predictor to conduct first-cut assessment, which could help speed up the wine ratings process.
+
+
 
 ## Introduction
 
@@ -36,18 +38,26 @@ Moreover, we believe wineries or wine rating institutes could find the model as 
 
 The data set used in this project is the results of a chemical analysis of the Portuguese "Vinho Verde" wine, conducted by Paulo Cortez, A. Cerdeira, F. Almeida, T. Matos and J. Reis [@cortez2009modeling]. It was sourced from the UCI Machine Learning Repository [@Dua:2019] which can be found [here](https://archive.ics.uci.edu/ml/datasets/wine+quality).
 
-There are two datasets for red and white wine samples. For each wine sample observation , the inputs contains measurements of various objective physicochemical tests, and the output is the median wine quality ratings given by experts on the scale from 0 (very bad) and 10 (very excellent).The author notes that data on grape types, wine brand, wind selling price among other are not available due to privacy and logistics issues. There are 1599 observations for red wine and 4898 observations of white wine.
+There are two datasets for red and white wine samples. For each wine sample observation , the inputs contains measurements of various objective physicochemical tests, and the output is the median wine quality ratings given by experts on the scale from 0 (very bad) and 10 (very excellent).The author notes that data on grape types, wine brand, wind selling price among other are not available due to privacy and logistics issues. There are 1599 observations for red wine and 4898 observations of white wine (as demonstrated in Figure 1).
 
 ```{r, fig.cap = "Figure 1: Distribution of type of wine", out.width= "50%", fig.align='center'}
 
 knitr::include_graphics("../eda/wine_EDA_files/distribution_of_type_of_wine.svg")
 ```
 
+
+
+```{r, fig.cap = "Figure 2: Class imbalance in wine quality rank", out.width= "50%", fig.align='center'}
+
+knitr::include_graphics("../eda/wine_EDA_files/wine_quality_rank.svg")
+```
+
+
 ### Analysis
 
-At the preprocessing stage, we decided to combine the red and white data set as well as group the data in bigger classification, namely "poor", "normal" and "excellent" for scale "1-4", "5-6" and "7-9" so as to have bigger sample size (as per Figure 2). We acknowledge that the data is imbalanced, hence instead of only using accuracy based to judge the model performance, we also include f1-score and use it as our main assessment metric. f-1 score is metric that combine both the precision and recall metrics, which focus on the false negative and false positive rate of the data and would be appropriate to use with an imbalanced data set.{Bruhat: to add more justification for f-1 micro score}
+At the preprocessing stage, we decided to combine the red and white data set as well as group the data in bigger classification, namely "poor", "normal" and "excellent" for scale "1-4", "5-6" and "7-9" so as to have bigger sample size (as per Figure 3). We acknowledge that the data is imbalanced, hence instead of only using accuracy based to judge the model performance, we also include f1-score and use it as our main assessment metric. f-1 score is metric that combine both the precision and recall metrics, which focus on the false negative and false positive rate of the data and would be appropriate to use with an imbalanced data set.{Bruhat: to add more justification for f-1 micro score}
 
-```{r, fig.cap = "Figure 2: Regrouping of wine quality classification", out.width= "50%", fig.align='center'}
+```{r, fig.cap = "Figure 3: Regrouping of wine quality classification", out.width= "50%", fig.align='center'}
 
 knitr::include_graphics("wine_classification.png")
 ```
@@ -56,7 +66,7 @@ In this project we are trying to predict the quality of a given wine sample usin
 
 We eventually decided to pick neutral network Multi-layer Perception (MLP) model as the model that yield the best results after running the various machine learning models through the train data set, comparing their performance based on f1-score and checking consistency across cross-validation runs. We noticed that random forest recorded high f1-validation score at 0.84, however, it also had a large gap between train and validation with a perfect train score of 1. This caused us to think the model has overfitted. Logistic regression also showed promising f1 validation score results in our case, yet this high results were not consistent across cross-validation splits. Hence, with most models struggled to get to the 0.8 f1-score mark without significantly overfitting on the train set, while MLP shows consistent results across all cross-validation splits, our final choice landed on MLP model because we think it would generalize better.
 
-```{r, fig.cap = "Figure 3: Score results among different machine learning model we have explore", fig.align='center'}
+```{r, fig.cap = "Figure 4: Score results among different machine learning model we have explore", fig.align='center'}
 knitr::include_graphics("../results/f1_score_all_classifiers.svg")
 ```
 
@@ -68,7 +78,7 @@ The Python and R programming languages [@R; @Python] and the following Python an
 
 Looking at the distribution plot of the respective wine quality group interacting with each explanatory features, we can see that higher quality wine seems to be more associated with higher `alcohol` level and lower `density`. Lower `volatile acidity` also seems to be indicative of better wine. Better ranked wine also seem to have `higher free sulfur dioxide` level than poor wine though the relationship is not that clear based on the plot. The rest of the features do not seems be very distinguishable among different quality wine.
 
-```{r distribution plot, fig.cap = "Figure 4: Distribution plot between wine quality and various attributes from physicochemical test", fig.align='center'}
+```{r distribution plot, fig.cap = "Figure 5: Distribution plot between wine quality and various attributes from physicochemical test", fig.align='center'}
 
 knitr::include_graphics("../eda/wine_EDA_files/wine_quality_rank_per_feature.svg")
 
@@ -76,14 +86,15 @@ knitr::include_graphics("../eda/wine_EDA_files/wine_quality_rank_per_feature.svg
 
 Since this is a multi-class classification, our goal was to find a model that was consistent and able to recognize patterns from our data. We choose to use a neutral network Multi-layer Perception (MLP) model as it was consistent and showed promising results. If we take a look at the accuracy scores and f1 scores across cross validation splits, we can see that it is pretty consistent which was not the case with many models.
 
-```{r, echo=FALSE,out.width="50%", out.height="20%",fig.cap="Figure 5: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model",fig.show='hold',fig.align='center'}
+```{r, echo=FALSE,out.width="50%", out.height="20%",fig.cap="Figure 6:  f1 micro scores across cross validation splits for RandomForest model (left) and neutral network Multi-layer Perception (MLP) model (right)",fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("../results/f1_score_random_forest.svg","../results/f1_score_mlp.svg"))
 ``` 
 
 
-Our model performed quite well on the test data as well. If we take a look at the confusion matrix below. As we discussed earlier, the prediction at the lower end of wine quality spectrum is acceptable. As we can see from the confusion matrix below, ~13% error rate for the lower end of spectrum and also very acceptable false classifications in the high end of spectrum.
+Our model performed quite well on the test data as well. If we take a look at the confusion matrix below. As we discussed earlier, the prediction at the lower end of wine quality spectrum is acceptable. As we can see from the confusion matrix below, ~13% error rate for the lower end of spectrum and also very acceptable false classifications in the high end of spectrum. The final test f1_micro score for our model is relatively decent at 0.83538.
 
-```{r, fig.cap = "Figure 6: Confusion Matrix", fig.align='center'}
+
+```{r, fig.cap = "Figure 7: Confusion Matrix", fig.align='center'}
 knitr::include_graphics("../results/final_model_quality.png")
 ```
 
