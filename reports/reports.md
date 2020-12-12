@@ -184,11 +184,7 @@ from physicochemical test
 </div>
 
 Since this is a multi-class classification, our goal was to find a model
-that was consistent and able to recognize patterns from our data. We
-choose to use a neutral network Multi-layer Perception (MLP) model as it
-was consistent and showed promising results. If we take a look at the
-accuracy scores and f1 scores across cross validation splits, we can see
-that it is pretty consistent which was not the case with many models.
+that was consistent and able to recognize patterns from our data. After looking at the results, MLP and random forests seem to be the best models for our data. But after analysing the models, We concluded that Random forests is picking up noise in the data as the train error is comparatively drastically lower than the validation error. This is a sign of over fitting which does not seem to affect MLP. Furthermore, the cross-validation scores are more consistent and normally distributed compared to Random forests which further cements that MLP is the best pick.
 
 <div class="figure" style="text-align: center">
 
@@ -196,8 +192,8 @@ that it is pretty consistent which was not the case with many models.
 
 <p class="caption">
 
-Figure 5: Accuracy scores and f1 scores across cross validation splits
-for neutral network Multi-layer Perception (MLP) model
+Figure 5: f1 micro scores across cross validation splits
+for Random forests and neutral network Multi-layer Perception (MLP) model
 
 </p>
 
