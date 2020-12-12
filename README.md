@@ -26,6 +26,22 @@ The final report can be found [here](https://github.com/UBC-MDS/Wine_Quality_Pre
 
 ## Usage
 
+There are two suggested ways to run this analysis:
+
+
+#### 1\. Using Docker
+To run this analysis using Docker, clone/download this repository, use the command line to navigate to the root of this project on your computer, and then type the following (filling in PATH_ON_YOUR_COMPUTER with the absolute path to the root of this project on your computer).
+
+
+```bash
+docker run --rm -v PATH_ON_YOUR_COMPUTER:/home/data_analysis_eg ttimbers/data_analysis_pipeline_eg make -C '/home/data_analysis_eg' all
+```
+To clean up the analysis type:
+
+```bash
+docker run --rm -v PATH_ON_YOUR_COMPUTER:/home/data_analysis_eg ttimbers/data_analysis_pipeline_eg make -C '/home/data_analysis_eg' clean
+```
+#### 2\. Using Makefile
 To replicate the analysis, clone this GitHub repository, install the
 [dependencies](#dependencies) listed below, and run the following
 commands at the command line/terminal from the root directory of this

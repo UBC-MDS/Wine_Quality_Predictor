@@ -11,7 +11,7 @@ n16[label="reports/reports.md", color="green"];
 n18[label="reports/wine_refs.bib", color="green"];
 n14[label="results/best_Model.pkl", color="red"];
 n10[label="results/final_model_quality.png", color="red"];
-n3[label="results/wine_quality_rank_per_feature.png", color="red"];
+n3[label="results/wine_quality_rank_per_feature.svg", color="red"];
 n8[label="src/download_data.py", color="green"];
 n15[label="src/fit_wine_quality_predict_model.py", color="green"];
 n6[label="src/pre_processing_wine.py", color="green"];

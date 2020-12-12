@@ -56,7 +56,7 @@ In this project we are trying to predict the quality of a given wine sample usin
 
 We eventually decided to pick neutral network Multi-layer Perception (MLP) model as the model that yield the best results after running the various machine learning models through the train data set, comparing their performance based on f1-score and checking consistency across cross-validation runs. We noticed that random forest recorded high f1-validation score at 0.84, however, it also had a large gap between train and validation with a perfect train score of 1. This caused us to think the model has overfitted. Logistic regression also showed promising f1 validation score results in our case, yet this high results were not consistent across cross-validation splits. Hence, with most models struggled to get to the 0.8 f1-score mark without significantly overfitting on the train set, while MLP shows consistent results across all cross-validation splits, our final choice landed on MLP model because we think it would generalize better.
 
-```{r, fig.cap = "Table 1: Score results among different machine learning model we have explore", fig.align='center'}
+```{r, fig.cap = "Figure 3: Score results among different machine learning model we have explore", fig.align='center'}
 knitr::include_graphics("../results/f1_score_all_classifiers.svg")
 ```
 
@@ -68,7 +68,7 @@ The Python and R programming languages [@R; @Python] and the following Python an
 
 Looking at the distribution plot of the respective wine quality group interacting with each explanatory features, we can see that higher quality wine seems to be more associated with higher `alcohol` level and lower `density`. Lower `volatile acidity` also seems to be indicative of better wine. Better ranked wine also seem to have `higher free sulfur dioxide` level than poor wine though the relationship is not that clear based on the plot. The rest of the features do not seems be very distinguishable among different quality wine.
 
-```{r distribution plot, fig.cap = "Figure 3: Distribution plot between wine quality and various attributes from physicochemical test", fig.align='center'}
+```{r distribution plot, fig.cap = "Figure 4: Distribution plot between wine quality and various attributes from physicochemical test", fig.align='center'}
 
 knitr::include_graphics("../eda/wine_EDA_files/wine_quality_rank_per_feature.svg")
 
@@ -76,14 +76,14 @@ knitr::include_graphics("../eda/wine_EDA_files/wine_quality_rank_per_feature.svg
 
 Since this is a multi-class classification, our goal was to find a model that was consistent and able to recognize patterns from our data. We choose to use a neutral network Multi-layer Perception (MLP) model as it was consistent and showed promising results. If we take a look at the accuracy scores and f1 scores across cross validation splits, we can see that it is pretty consistent which was not the case with many models.
 
-```{r, echo=FALSE,out.width="50%", out.height="20%",fig.cap="Figure 4: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model",fig.show='hold',fig.align='center'}
+```{r, echo=FALSE,out.width="50%", out.height="20%",fig.cap="Figure 5: Accuracy scores and f1 scores across cross validation splits for neutral network Multi-layer Perception (MLP) model",fig.show='hold',fig.align='center'}
 knitr::include_graphics(c("../results/f1_score_random_forest.svg","../results/f1_score_mlp.svg"))
 ``` 
 
 
 Our model performed quite well on the test data as well. If we take a look at the confusion matrix below. As we discussed earlier, the prediction at the lower end of wine quality spectrum is acceptable. As we can see from the confusion matrix below, ~13% error rate for the lower end of spectrum and also very acceptable false classifications in the high end of spectrum.
 
-```{r, fig.cap = "Figure 5: Confusion Matrix", fig.align='center'}
+```{r, fig.cap = "Figure 6: Confusion Matrix", fig.align='center'}
 knitr::include_graphics("../results/final_model_quality.png")
 ```
 
