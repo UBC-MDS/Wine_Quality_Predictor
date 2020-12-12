@@ -18,13 +18,12 @@ For this analysis, we used the neutral network Multi-layer Perception
 different wine attributes obtained from physicochemical tests such as
 alcohol, sulfur dioxide, fixed acidity, residual sugar. When we test it
 with the different validation data sets, the model yield robust results
-with 80% accuracy and 80% f1- score (a weighted average metric between
-precision and recall rate). We also have comparably high score at 80%
-accuracy and f1-score when we run the model on our test set. Based on
+with 81% f1 micro score. We also have comparably high score at 83%
+f1 micro when we run the model on our test set. Based on
 these results, we opine that that the model seems to generalize well
 based on the test set predictions.
 
-However, it incorrectly classifies 13.7% of the data in the lower end of
+However, it incorrectly classifies considerable number of examples in the lower end of
 spectrum (between normal and poor). This could be due to class imbalance
 present in the data set where normal samples outnumber poor ones (as
 demonstrated in Figure 2 below). Improving the data collection methods
@@ -102,12 +101,9 @@ At the preprocessing stage, we decided to combine the red and white data
 set as well as group the data in bigger classification, namely “poor”,
 “normal” and “excellent” for scale “1-4”, “5-6” and “7-9” so as to
 have bigger sample size (as per Figure 3). We acknowledge that the data
-is imbalanced, hence instead of only using accuracy based to judge the
-model performance, we also include f1-score and use it as our main
-assessment metric. f-1 score is metric that combine both the precision
-and recall metrics, which focus on the false negative and false positive
-rate of the data and would be appropriate to use with an imbalanced data
-set.{Bruhat: to add more justification for f-1 micro score}
+is imbalanced, hence instead of using accuracy to judge the
+model performance, we are using f1-score as our main
+assessment metric. When choosing our scoring metric, we had quite a few options but we narrowed them down to F1 macro , F1 micro  and F1 weighted. We wanted our score to calculate metrics globally while also considering the false negatives and false positives. But, Since our classes are imbalanced, F1 macro cannot be used as it does not take label imbalance into account. F1 weighted seems to be a choice but since we wanted to take precision and recall into account, this wouldn't be our ideal choice. Finally, we decided to use F1 micro as it calculates metrics globally while taking the total true positives, false negatives and false positives into consideration.
 
 <div class="figure" style="text-align: center">
 
@@ -200,8 +196,8 @@ Since this is a multi-class classification, our goal was to find a model
 that was consistent and able to recognize patterns from our data. We
 choose to use a neutral network Multi-layer Perception (MLP) model as it
 was consistent and showed promising results. If we take a look at the
-accuracy scores and f1 scores across cross validation splits, we can see
-that it is pretty consistent which was not the case with many models.
+f1 scores across cross validation splits, we can see
+that MLP is pretty consistent which was not the case with Random forests and many models.
 
 <div class="figure" style="text-align: center">
 
@@ -220,10 +216,10 @@ RandomForest model (left) and neutral network Multi-layer Perception
 Our model performed quite well on the test data as well. If we take a
 look at the confusion matrix below. As we discussed earlier, the
 prediction at the lower end of wine quality spectrum is acceptable. As
-we can see from the confusion matrix below, \~13% error rate for the
-lower end of spectrum and also very acceptable false classifications in
+we can see from the row normalized confusion matrix below, the error rate for the
+lower end of spectrum is very acceptable and we have relatively low number of false classifications in
 the high end of spectrum. The final test f1\_micro score for our model
-is relatively decent at 0.83538.
+is similar to our validation score and right at where we expected it to be, at 0.83538.
 
 <div class="figure" style="text-align: center">
 
