@@ -11,7 +11,7 @@
 
 # all: results/best_Model.pkl results/final_model_quality.png reports/reports.md
 
-all: results/wine_quality_rank_per_feature.png results/final_model_quality.png reports/reports.md
+all: results/wine_quality_rank_per_feature.svg results/final_model_quality.png reports/reports.md
 
 # download wine data set to directory
 data/raw/winequality-red.csv: src/download_data.py
@@ -25,7 +25,7 @@ data/processed/processed.csv data/processed/processed_test.csv data/processed/pr
 	python src/pre_processing_wine.py --in_file_1="data/raw/winequality-red.csv" --in_file_2="data/raw/winequality-white.csv" --out_dir="data/processed/"
 
 # create exploratory data analysis figure and write to file
-results/wine_quality_rank_per_feature.png: eda/wine_eda.py data/processed/processed.csv
+results/wine_quality_rank_per_feature.svg: eda/wine_eda.py data/processed/processed.csv
 	python eda/wine_eda.py -i data/processed/processed.csv -o eda/wine_EDA_files/
 
 # fitting model
@@ -42,7 +42,7 @@ reports/reports.md: reports/reports.Rmd reports/wine_refs.bib
 
 clean: 
 	rm -rf data
-	rm eda/wine_EDA_files/wine_quality_rank_per_feature.png
+	rm eda/wine_EDA_files/wine_quality_rank_per_feature.svg
 	rm -rf results
 	rm reports/reports.md
 	

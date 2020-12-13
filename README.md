@@ -26,6 +26,23 @@ The final report can be found [here](https://github.com/UBC-MDS/Wine_Quality_Pre
 
 ## Usage
 
+There are two suggested ways to run this analysis:
+
+
+#### 1\. Using Docker
+To run this analysis using Docker, clone/download this repository, use the command line to navigate to the root of this project on your computer, and then type the following at the command line/terminal from the root directory of this project.
+
+
+
+```bash
+docker run --rm -v /$(pwd):/home/Wine_Quality_Predictor rwang778/wine-quality-predictor-dockerfile:latest make -C /home/Wine_Quality_Predictor all
+```
+To clean up the analysis type:
+
+```bash
+docker run --rm -v /$(pwd):/home/Wine_Quality_Predictor rwang778/wine-quality-predictor-dockerfile:latest make -C /home/Wine_Quality_Predictor clean
+```
+#### 2\. Using Makefile
 To replicate the analysis, clone this GitHub repository, install the
 [dependencies](#dependencies) listed below, and run the following
 commands at the command line/terminal from the root directory of this
@@ -58,6 +75,14 @@ conda activate wine_env
      - knitr==1.30
      - kableExtra==1.3.1
      - tidyverse==1.3.0
+
+
+## Dependency Diagram
+
+The diagram below shows the structure of how the project and this repo is structured to produce the final results.
+
+![](Makefile.png)
+
 
 
 ## License
