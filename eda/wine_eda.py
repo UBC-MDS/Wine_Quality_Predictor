@@ -6,12 +6,13 @@ import numpy as np
 import pandas as pd
 import altair as alt
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
 from altair_saver import save
 
 
-alt.renderers.enable('mimetype');
-alt.data_transformers.disable_max_rows();
+alt.renderers.enable('mimetype')
+alt.data_transformers.disable_max_rows()
 
 
 # ## Summary of the data set
@@ -125,8 +126,15 @@ def generate_eda_plots(data):
 def save_plots(output_dir, plots_dict):
     for k, v in plots_dict.items():
         try:
-            driver = webdriver.Chrome(ChromeDriverManager().install())
-            save(v, output_dir + "/" + k, method='selenium', webdriver=driver)
+            chrome_options = Options()
+            chrome_options.add_argument("--headless")
+            chrome_options.add_argument("--disable-gpu")
+            chrome_options.add_argument("--no-sandbox")
+            chrome_options.add_argument("start-maximized")  #
+            chrome_options.add_argument("disable-infobars")
+            chrome_options.add_argument("--disable-extensions")
+            driver = webdriver.Chrome(options=chrome_options)
+            save(v, output_dir + "/" + k, webdriver=driver)
             print("Successfully saved {}".format(k))
         except Exception as e:
             print(e)
